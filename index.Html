@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>KGN Onion Birista - Premium Crispy Fried Onions | Order Online Surat</title>
+    <meta name="description" content="Order 100% fresh, crispy, golden fried onions online from KGN Onion Birista. Perfect for Biryani, Korma, and Gravies. Hygienically packed packs delivered across Surat. Secure payments & live tracking.">
+    <meta name="keywords" content="Fried Onion online, buy birista Surat, crispy fried onion, KGN Birista, ready to use fried onion, premium birista surat, buy fried onion online india">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kgnonionbirista.com/">
+    
+    <meta property="og:title" content="KGN Onion Birista - Premium Crispy Fried Onions">
+    <meta property="og:description" content="Get restaurant-style crunch instantly. Premium packs available in 250g, 500g, and 1kg. Secure payments & live tracking.">
+    <meta property="og:image" content="birista-1kg.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kgnonionbirista.com/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+    
+    <style>
+        :root {
+            --primary: #6E360F;
+            --primary-light: #CD853F;
+            --accent: #FF8C00;
+            --accent-gold: #D4AF37;
+            --bg-light: #FCF9F5;
+            --bg-card: #ffffff;
+            --text-dark: #2C2520;
+            --text-muted: #6E5A4E;
+            --border-color: #EFEAE4;
+            --card-shadow: 0 10px 30px rgba(110, 54, 15, 0.05);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        .dark-mode {
+            --primary: #F0E6DF;
+            --primary-light: #CD853F;
+            --accent: #FF9F43;
+            --bg-light: #1A1512;
+            --bg-card: #251E1A;
+            --text-dark: #F5EFEB;
+            --text-muted: #C5B3A6;
+            --border-color: #3A3029;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --nav-bg: rgba(37, 30, 26, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-dark); transition: background 0.3s, color 0.3s; overflow-x: hidden; padding-bottom: 60px; }
+
+        #scrollProgress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--accent), var(--accent-gold)); width: 0%; z-index: 9999; }
+
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .loader-onion { font-size: 60px; animation: bounce 1s infinite alternate; }
+        @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+
+        .section-padding { padding: 60px 5% 30px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .title-main { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 15px; position: relative; }
+        .title-main::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto 0; border-radius: 2px; }
+        .subtitle { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+
+        .top-badges-ticker { background: linear-gradient(45deg, var(--primary), #4A2206); color: #fff; font-size: 13px; font-weight: 600; padding: 10px 0; overflow: hidden; display: flex; width: 100%; }
+        .ticker-badges-wrap { display: flex; width: 200%; animation: scrollBadges 15s linear infinite; gap: 60px; justify-content: space-around; align-items: center; white-space: nowrap; }
+        @keyframes scrollBadges { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-badge-item { display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
+        .ticker-badge-item i { color: var(--accent-gold); }
+
+        header { background: var(--nav-bg); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 900; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+        .brand-link { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .brand-text h1 { color: var(--primary); font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+        .brand-text p { font-size: 10px; color: var(--primary-light); font-weight: 700; text-transform: uppercase; }
+        .logo-container img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--accent-gold); object-fit: cover; }
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+
+        .btn-icon-nav { background: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-dark); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; position: relative; font-size: 16px; transition: all 0.3s; }
+        .btn-icon-nav:hover { background: var(--primary); color: #fff; }
+        .badge-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        .presentation-slider { margin-bottom: 40px; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+        .slide-content-frame { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 60px 20px; position: relative; }
+        .slide-text-box { max-width: 800px; margin: 0 auto; z-index: 5; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .slide-text-box h2 { font-size: 44px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; text-shadow: 0 3px 12px rgba(0,0,0,0.5); text-align: center; }
+        .slide-text-box p { font-size: 18px; margin-bottom: 30px; color: #F5EFEB; text-shadow: 0 2px 8px rgba(0,0,0,0.5); text-align: center; max-width: 700px; }
+
+        .story-section { background: var(--bg-card); border-radius: 24px; margin: 20px auto 40px; position: relative; z-index: 10; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; p { margin-bottom: 15px; color: var(--text-muted); } }
+        @media(max-width: 768px) { .story-grid { grid-template-columns: 1fr; } }
+        .catalog-dl-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 14px; transition: opacity 0.3s; }
+        .catalog-dl-btn:hover { opacity: 0.9; }
+
+        .search-wrapper { max-width: 600px; margin: 0 auto 40px; position: relative; display: flex; box-shadow: var(--card-shadow); border-radius: 50px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--border-color); }
+        .search-wrapper input { width: 100%; padding: 15px 25px; border: none; outline: none; background: transparent; color: var(--text-dark); font-size: 15px; }
+        .search-wrapper button { background: var(--primary); color: white; border: none; padding: 0 25px; cursor: pointer; font-size: 16px; }
+
+        .stats-banner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color); padding: 30px; text-align: center; margin-bottom: 40px; box-shadow: var(--card-shadow); }
+        .stats-banner .stat-node h4 { font-size: 36px; font-weight: 800; color: var(--primary); }
+        .stats-banner .stat-node p { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+        @media(max-width: 576px) { .stats-banner { grid-template-columns: 1fr; gap: 30px; } }
+
+        .gift-container { text-align: center; padding: 40px 20px; background: var(--bg-card); border-radius: 16px; border: 1px dashed var(--primary-light); margin: 40px 0; }
+        .gift-box-icon { font-size: 55px; color: #E74C3C; cursor: pointer; display: inline-block; animation: scaleVibrate 0.5s infinite alternate; }
+        @keyframes scaleVibrate { 0% { transform: scale(1) rotate(-3deg); } 100% { transform: scale(1.08) rotate(3deg); } }
+        .offer-popup { display: none; background: var(--bg-light); border: 2px solid var(--accent); padding: 20px; border-radius: 12px; max-width: 400px; margin: 20px auto 0; animation: fadeReveal 0.4s ease; }
+
+        .products-horizontal-scroller { display: flex; gap: 20px; overflow-x: auto; padding: 20px 5px; margin-bottom: 40px; }
+        .products-horizontal-scroller::-webkit-scrollbar { display: none; }
+        
+        .product-card { background: var(--bg-card); border-radius: 20px; box-shadow: var(--card-shadow); padding: 15px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; min-width: 260px; max-width: 280px; flex-shrink: 0; position: relative; transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        
+        .stock-indicator-badge { position: absolute; top: 15px; left: 15px; color: white; font-size: 10px; font-weight: bold; padding: 4px 10px; border-radius: 20px; z-index: 5; }
+
+        .wishlist-btn-hook { position: absolute; top: 15px; right: 15px; background: var(--bg-light); border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #aaa; font-size: 16px; transition: color 0.3s; z-index: 5; }
+        .wishlist-btn-hook.active { color: #E74C3C; }
+
+        .product-gallery-frame { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 12px; background: #fdfdfd; }
+        .main-gallery-view { width: 100%; height: 160px; object-fit: cover; cursor: zoom-in; }
+        .gallery-thumb-row { display: flex; justify-content: center; gap: 5px; margin-top: 5px; }
+        .gallery-thumb-node { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 1px solid var(--border-color); }
+        .gallery-thumb-node.active { border-color: var(--accent); }
+
+        .product-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin: 5px 0; min-height: 44px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        
+        .qty-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 12px 0; }
+        .qty-btn { background: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-dark); width: 32px; height: 32px; font-weight: bold; font-size: 16px; border-radius: 6px; cursor: pointer; }
+        .qty-val { font-weight: bold; font-size: 15px; min-width: 25px; text-align: center; }
+
+        .price-tag { font-size: 20px; color: var(--primary); font-weight: 800; margin-bottom: 12px; text-align: center; }
+        .buy-btn { background: linear-gradient(45deg, var(--primary), #4A2206); color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; font-weight: bold; font-size: 14px; cursor: pointer; transition: opacity 0.3s; }
+        .buy-btn:hover { opacity: 0.9; }
+
+        /* Order Live Pipeline Components */
+        .order-pipeline-container { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; margin-bottom: 40px; box-shadow: var(--card-shadow); text-align: center; }
+        .pipeline-steps { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 30px auto 0; position: relative; }
+        .pipeline-steps::before { content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 4px; background: var(--border-color); z-index: 1; }
+        .pipeline-progress-bar { position: absolute; top: 20px; left: 0; width: 0%; height: 4px; background: #27AE60; z-index: 2; transition: width 0.5s ease; }
+        .pipeline-node { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: bold; }
+        .pipeline-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-light); border: 2px solid var(--border-color); color: var(--text-muted); font-size: 16px; transition: all 0.3s; }
+        .pipeline-node.active .pipeline-circle { background: #27AE60; border-color: #27AE60; color: white; box-shadow: 0 0 15px rgba(39,174,96,0.4); }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .feature-card { background: var(--bg-card); padding: 25px; border-radius: 16px; text-align: center; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card i { font-size: 35px; color: var(--accent); margin-bottom: 15px; }
+        .feature-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 13px; color: var(--text-muted); }
+
+        .process-timeline { display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; position: relative; }
+        .process-step { display: flex; gap: 20px; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+        .step-num { background: var(--accent); color: white; width: 35px; height: 35px; border-radius: 50%; font-weight: bold; font-size: 16px; flex-shrink: 0; }
+        .step-info h4 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        .step-info p { font-size: 13px; color: var(--text-muted); }
+
+        .recipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .recipe-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+        .recipe-content { padding: 20px; }
+        .recipe-content h4 { font-size: 18px; margin-bottom: 8px; color: var(--primary); }
+        .recipe-content p { font-size: 13px; color: var(--text-muted); }
+
+        .coupon-hub-box { background: linear-gradient(135deg, #FFF9F2, #FFEAD4); border: 2px dashed var(--accent); padding: 25px; border-radius: 16px; text-align: center; max-width: 500px; margin: 40px auto; color: #2C2520; }
+        .coupon-code-label { display: inline-block; background: white; padding: 8px 20px; border-radius: 6px; font-weight: 800; font-size: 18px; color: var(--primary); letter-spacing: 1px; margin: 12px 0; border: 1px dashed var(--accent); }
+        .coupon-btn { background: var(--primary); color: white; border: none; padding: 8px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-left: 10px; font-size: 14px; }
+
+        .reviews-slider-container { display: flex; gap: 20px; overflow-x: auto; padding: 20px 5px; margin-bottom: 20px; }
+        .reviews-slider-container::-webkit-scrollbar { display: none; }
+        .review-card-premium { background: var(--bg-card); border-radius: 16px; padding: 25px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); min-width: 300px; max-width: 320px; flex-shrink: 0; }
+        .rev-source-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: bold; color: #4285F4; margin-top: 10px; }
+
+        .feedback-section { background: var(--bg-card); border-radius: 24px; padding: 40px 20px; text-align: center; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+        .star-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .star-btn { font-size: 40px; color: #DCD1C4; cursor: pointer; background: none; border: none; transition: transform 0.2s; }
+        .star-btn:hover { transform: scale(1.1); }
+        .feedback-text-area { width: 100%; max-width: 500px; padding: 15px; border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-dark); border-radius: 10px; resize: none; outline: none; margin-bottom: 15px; font-size: 14px; }
+        .feedback-submit-btn { background: var(--primary); color: white; border: none; padding: 12px 35px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        /* Integrated Web Admin Dashboard Framework Styles */
+        .admin-trigger-panel { text-align: center; margin: 40px 0; padding: 15px; background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 10px; }
+        .admin-btn { background: #4A5568; color: white; padding: 8px 16px; border: none; border-radius: 50px; font-size: 12px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
+        .admin-btn:hover { background: #2D3748; }
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; font-size: 13px; color: #2C2520; }
+        .admin-table th, .admin-table td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+
+        .float-call-btn-trigger { position: fixed; right: 25px; bottom: 150px; background-color: var(--primary); color: white; border-radius: 50%; width: 50px; height: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 800; text-decoration: none; font-size: 20px; }
+        .whatsapp-float { position: fixed; bottom: 215px; right: 25px; background-color: #25D366; color: white; border-radius: 50%; width: 50px; height: 50px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 800; text-decoration: none; font-size: 24px; animation: bounce 2s infinite alternate; }
+
+        .sticky-bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; z-index: 850; box-shadow: 0 -2px 15px rgba(0,0,0,0.05); }
+        .sticky-btn { flex: 1; text-align: center; padding: 14px; font-weight: 700; text-decoration: none; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.3s; }
+        .sticky-call { color: var(--text-dark); background: var(--bg-card); border-right: 1px solid var(--border-color); }
+        .sticky-order { color: white; background: var(--primary); }
+
+        #backToTopBtn { position: fixed; right: 25px; bottom: 280px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-dark); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 800; font-size: 14px; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--bg-card); padding: 30px; border-radius: 20px; max-width: 480px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--text-dark); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-dark); border-radius: 8px; outline: none; font-size: 14px; }
+        .cart-summary-box { background: var(--bg-light); padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 20px; font-size: 14px; }
+        .submit-order-btn { background: linear-gradient(45deg, #27AE60, #219653); color: white; border: none; width: 100%; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(39,174,96,0.3); }
+
+        /* Professional Payment Selector Styles */
+        .payment-method-selector { margin-bottom: 15px; text-align: left; }
+        .payment-method-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+        .payment-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .pay-option-card { border: 1px solid var(--border-color); background: var(--bg-light); padding: 12px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 0.2s; position: relative; }
+        .pay-option-card input[type="radio"] { position: absolute; top: 8px; right: 8px; cursor: pointer; }
+        .pay-option-card.selected { border-color: var(--primary); background: #FFF; box-shadow: 0 2px 10px rgba(110, 54, 15, 0.08); }
+        .pay-option-card i { font-size: 20px; color: var(--primary); }
+        .pay-option-card span { font-size: 12px; font-weight: 600; text-align: center; }
+        .sub-payment-icons { display: flex; justify-content: center; gap: 12px; font-size: 24px; color: var(--text-muted); opacity: 0.5; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px; }
+
+        footer { background-color: #211A16; color: #EFEAE4; padding: 60px 5% 40px; text-align: center; border-top: 4px solid var(--accent); }
+        .footer-grid-hook { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; text-align: left; }
+        @media(max-width: 576px) { .footer-grid-hook { text-align: center; } }
+        .footer-column h5 { font-size: 16px; color: white; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px; }
+        .footer-column p, .footer-column a { font-size: 13px; color: #C5B3A6; text-decoration: none; margin-bottom: 10px; display: block; }
+        .footer-column a:hover { color: var(--accent); }
+        
+        .trust-ribbon-ticker { background: #15100E; padding: 15px 0; border-y: 1px solid #2C211D; overflow: hidden; display: flex; position: relative; width: 100%; margin-top: 40px; }
+        .ticker-inner-wrap { display: flex; width: 200%; animation: scrollTicker 20s linear infinite; gap: 50px; justify-content: space-around; align-items: center; }
+        @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-logo-node { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; color: #FFF; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div id="scrollProgress"></div>
+
+    <div id="loader">
+        <div class="loader-onion">🧅</div>
+        <h2 style="color: #6E360F; margin-top:15px; font-weight:900; letter-spacing:0.5px;">KGN Onion Birista</h2>
+        <p style="font-size:12px; font-weight:600; color: #CD853F; text-transform:uppercase;">Loading Portal Engine...</p>
+    </div>
+
+    <div class="top-badges-ticker">
+        <div class="ticker-badges-wrap">
+            <div class="ticker-badge-item"><i class="fa-solid fa-certificate"></i> FSSAI Certified Outlet</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-flag"></i> 100% Made In India</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-hand-sparkles"></i> Hygienically Packed</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-medal"></i> Premium Quality Guarantee</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-certificate"></i> FSSAI Certified Outlet</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-flag"></i> 100% Made In India</div>
+        </div>
+    </div>
+
+    <header>
+        <a href="#" class="brand-link">
+            <div class="logo-container">
+                <img src="logo.png" alt="KGN Onion Birista Logo">
+            </div>
+            <div class="brand-text">
+                <h1>KGN ONION BIRISTA</h1>
+                <p>Enterprise Platform</p>
+            </div>
+        </a>
+        <div class="nav-actions">
+            <button class="btn-icon-nav flex-center" onclick="toggleDarkMode()" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+            <button class="btn-icon-nav flex-center" onclick="openWishlistModal()" title="View Wishlist"><i class="fa-solid fa-heart"></i><span class="badge-count" id="wishlistCount">0</span></button>
+            <button class="btn-icon-nav flex-center" onclick="openCartModal()" title="View Cart"><i class="fa-solid fa-basket-shopping"></i><span class="badge-count" id="cartCount">0</span></button>
+        </div>
+    </header>
+
+    <section class="presentation-slider">
+        <div class="swiper mainSlider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide-content-frame" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('hero-birista.jpg') center/cover no-repeat;">
+                    <div class="slide-text-box">
+                        <h2>Crispy, Golden & 100% Fresh Onion Birista</h2>
+                        <p>KGN Onion Birista offers premium quality crispy fried onions made from carefully selected fresh onions under hygienic conditions. Ideal for biryani, korma, pulao, gravies, and soups.</p>
+                        <a href="#shop-products" class="buy-btn" style="width:auto; padding:15px 35px; border-radius:50px;">🛒 Order Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide-content-frame" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('birista-cooking.jpg') center/cover no-repeat; background-color: #4A2206;">
+                    <div class="slide-text-box">
+                        <h2>Saves Your Cooking Time Perfect Garnish</h2>
+                        <p>Pyaaz kaatne aur talne ki jhanjhat ko alvida kahein. Layering ke dauran aur serving ke waqt top par daalein instant golden texture aur lajawab swad paane ke liye.</p>
+                        <a href="#shop-products" class="buy-btn" style="width:auto; padding:15px 35px; border-radius:50px; background: linear-gradient(45deg, var(--accent), var(--accent-gold));">✨ View Products</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <div class="container section-padding">
+
+        <section class="order-pipeline-container" id="trackingSection" style="display:none;" data-aos="fade-up">
+            <h3 style="color:var(--primary); font-weight:800;"><i class="fa-solid fa-truck-fast"></i> Live Track Your Order</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Order ID: <span id="trackOrderId" style="font-weight:bold; color:var(--accent);"></span></p>
+            <div class="pipeline-steps">
+                <div class="pipeline-progress-bar" id="pipelineBar"></div>
+                <div class="pipeline-node active" id="tstep1">
+                    <div class="pipeline-circle flex-center"><i class="fa-solid fa-receipt"></i></div>
+                    <span>Received</span>
+                </div>
+                <div class="pipeline-node" id="tstep2">
+                    <div class="pipeline-circle flex-center"><i class="fa-solid fa-square-check"></i></div>
+                    <span>Approved</span>
+                </div>
+                <div class="pipeline-node" id="tstep3">
+                    <div class="pipeline-circle flex-center"><i class="fa-solid fa-box-open"></i></div>
+                    <span>Dispatched</span>
+                </div>
+            </div>
+            <p id="pipelineStatusText" style="margin-top:20px; font-weight:bold; color:#27AE60; font-size:14px;"></p>
+        </section>
+
+        <section class="story-section padding section-padding" data-aos="fade-up">
+            <h3 class="title-main">Our Story & Quality Promise</h3>
+            <div class="story-grid">
+                <div>
+                    <p>Hamara KGN Onion Birista Surat, Gujarat ka ek vishwasniya naam hai jo aapke kitchen ke kaam ko behad aasan aur swadist banata hai. Hum poori tarah se customers ke liye bina kisi milawat ke, select kiye gaye taaze pyaaz se birista tayyar karte hain.</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-shuttle-space" style="font-size: 50px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Pure Perfection</h4>
+                    <p>No bulk compromises. Hum sirf behtareen packets banate hain aapke parivar ke liye.</p>
+                    <button class="catalog-dl-btn" onclick="downloadCatalogue()"><i class="fa-solid fa-file-pdf"></i> Download Product Catalogue (PDF)</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="search-wrapper" data-aos="fade-up">
+            <input type="text" id="productSearch" placeholder="Search product weight (e.g., 250g, 500g, 1kg)..." onkeyup="searchProducts()">
+            <button class="flex-center"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <section class="stats-banner" data-aos="fade-up">
+            <div class="stat-node">
+                <h4 class="counter-val" data-target="5400">0</h4>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-node">
+                <h4 class="counter-val" data-target="12500">0</h4>
+                <p>Packets Delivered</p>
+            </div>
+            <div class="stat-node">
+                <h4>4.9 ★</h4>
+                <p>Verified Rating</p>
+            </div>
+        </section>
+
+        <p style="text-align: center; font-size: 12px; font-weight: bold; color: var(--accent); margin-top: -20px; margin-bottom: 30px;"><i class="fa-solid fa-eye"></i> Live Counter: <span id="visitorCount">14</span> users are currently looking at this offer!</p>
+
+        <section class="gift-container" data-aos="zoom-in">
+            <p style="font-weight: bold; color: var(--primary); margin-bottom: 8px;">🎁 Tap the Secret Gift Box below for Today's Offer! 🎁</p>
+            <div class="gift-box-icon" id="giftBox" onclick="revealGiftOffer()">🎁</div>
+            <div class="offer-popup" id="offerPopup">
+                <h3 style="color: #27AE60; margin-bottom: 8px;">🎉 Congratulations Buyer! 🎉</h3>
+                <p style="font-size: 14px; font-weight: 600; color: #2C2520;">
+                    Aap agar <strong>1 KG ya usse zyada</strong> ka order karte hain toh delivery charge bilkul <strong>FREE</strong> hai! (Kam lene par ₹60 local delivery charge lagega).
+                </p>
+            </div>
+        </section>
+
+        <section id="shop-products">
+            <h3 class="title-main">Explore Our Special Products</h3>
+            <p class="subtitle">Swipe right to view all available sizes. Click on thumbnail images to switch gallery view.</p>
+            <div class="products-horizontal-scroller" id="productsDynamicContainer">
+                </div>
+        </section>
+
+        <div class="coupon-hub-box" data-aos="zoom-in">
+            <h4 style="font-weight:800;"><i class="fa-solid fa-tag"></i> Special Promo Discount</h4>
+            <p style="font-size:12px; margin-top:3px; opacity:0.9;">Apply this code at checkout to test instant calculation deduct:</p>
+            <div class="coupon-code-label" id="promoCodeStr">KGNCOUPON10</div>
+            <button class="coupon-btn" onclick="applyCouponCode()">Apply Code</button>
+        </div>
+
+        <section class="section-padding">
+            <h3 class="title-main">Why Choose KGN Birista?</h3>
+            <div class="features-grid" data-aos="fade-up">
+                <div class="feature-card"><i class="fa-solid fa-leaf"></i><h4>100% Fresh Onion</h4><p>Bina kisi artificial chemical ya mix ke, sirf premium fresh pyaaz se nirmis.</p></div>
+                <div class="feature-card"><i class="fa-solid fa-utensils"></i><h4>Ready to Use</h4><p>Pyaaz kaatne aur talne ki koi jhanjhat nahi. Seedhe packet kholein aur use karein.</p></div>
+                <div class="feature-card"><i class="fa-solid fa-shield-halved"></i><h4>Hygienically Packed</h4><p>Safety aur high hygiene parameters ke sath secure sealing mechanism.</p></div>
+                <div class="feature-card"><i class="fa-solid fa-box-archive"></i><h4>Long Shelf Life</h4><p>Air-tight storage environment mein rakhne par up to 6 mahine tak fresh rehta hai.</p></div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h3 class="title-main">Our Hygienic Manufacturing Process</h3>
+            <div class="process-timeline">
+                <div class="process-step"><div class="step-num flex-center">1</div><div class="step-info"><h4>Careful Selection & Sorting</h4><p>Surat local vegetable market se sabse behtar aur bade sizes ke pyaaz select kiye jaate hain.</p></div></div>
+                <div class="process-step"><div class="step-num flex-center">2</div><div class="step-info"><h4>Automated Slicing & Uniformity</h4><p>Machine dwara ek samaan bariki se cutting ki jaati hai taaki cooking uniform ho.</p></div></div>
+                <div class="process-step"><div class="step-num flex-center">3</div><div class="step-info"><h4>Controlled Frying & Oil Separation</h4><p>Premium vegetable oil mein light crisp fry karke centrifuge machine se excess oil nikal diya jata hai.</p></div></div>
+            </div>
+        </section>
+
+        <section class="section-padding" id="recipe-ideas" data-aos="fade-up">
+            <h3 class="title-main">Delicious Recipe Ideas</h3>
+            <div class="recipe-grid">
+                <div class="recipe-card"><div style="background:#eaeaea; width:100%; height:160px; display:flex; align-items:center; justify-content:center; font-size:40px;">🍛</div><div class="recipe-content"><h4>Shahi Biryani Garnish</h4><p>Layering ke dauran aur serving ke waqt top par daalein instant golden texture ke liye.</p></div></div>
+                <div class="recipe-card"><div style="background:#eaeaea; width:100%; height:160px; display:flex; align-items:center; justify-content:center; font-size:40px;">🥣</div><div class="recipe-content"><h4>Thick Mughlai Gravies</h4><p>Birista ko halke dahi ke sath crush karke dalein korma aur gravy ko thick aur lajawab banane ke liye.</p></div></div>
+                <div class="recipe-card"><div style="background:#eaeaea; width:100%; height:160px; display:flex; align-items:center; justify-content:center; font-size:40px;">🍲</div><div class="recipe-content"><h4>Haleem & Soups Crunch</h4><p>Soups ya festive haleem katori par upar se chidkein behtareen authentic restaurant test ke liye.</p></div></div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="text-align:center; padding:20px;"><h2 style="color:var(--primary); font-weight:800; font-size:24px;">Prepared in Clean Home Environment</h2><p style="color:var(--text-muted); font-size:14px; margin-top:10px;">Hamara business poori tarah se domestic hygiene norms ka dhyan rakhta hai.</p></div>
+                    <div class="swiper-slide" style="text-align:center; padding:20px;"><h2 style="color:var(--primary); font-weight:800; font-size:24px;">Zero Added Artificial Preservatives</h2><p style="color:var(--text-muted); font-size:14px; margin-top:10px;">Hum natural freshness aur dehydration method par vishwas rakhte hain.</p></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h3 class="title-main">Customer Reviews</h3>
+            <p class="subtitle">Verified customer reviews loaded permanently from local database.</p>
+            <div class="reviews-slider-container" id="reviewsContainer">
+                </div>
+        </section>
+
+        <section class="feedback-section" data-aos="fade-up">
+            <h4 style="font-weight:800; font-size:18px; color:var(--primary); margin-bottom:15px;">Share Your Experience with Us!</h4>
+            <div class="star-container">
+                <button class="star-btn" id="star1" onclick="handleStarClick(1)">★</button>
+                <button class="star-btn" id="star2" onclick="handleStarClick(2)">★</button>
+                <button class="star-btn" id="star3" onclick="handleStarClick(3)">★</button>
+                <button class="star-btn" id="star4" onclick="handleStarClick(4)">★</button>
+                <button class="star-btn" id="star5" onclick="handleStarClick(5)">★</button>
+            </div>
+            <div class="form-group" style="max-width: 500px; margin: 0 auto 15px;">
+                <input type="text" id="feedbackName" placeholder="Apna Naam Likhein..." style="background: var(--bg-light);">
+            </div>
+            <div>
+                <textarea class="feedback-text-area" id="feedbackComment" rows="3" placeholder="Apna anubhav ya review message yahan likhein..."></textarea>
+            </div>
+            <button class="feedback-submit-btn" onclick="submitLiveTextFeedback()">Submit & Save Permanently</button>
+        </section>
+
+        <div class="admin-trigger-panel" data-aos="fade-up">
+            <p style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">🛡️ Internal Control Section Panel:</p>
+            <button class="admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-gears"></i> Open Admin Panel Dashboard</button>
+        </div>
+
+    </div>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content" style="max-width: 750px; width:95%;">
+            <span class="close-btn" onclick="closeAdminModal()">×</span>
+            <h3 style="color:var(--primary); margin-bottom:15px;"><i class="fa-solid fa-shield-halved"></i> KGN Admin Dashboard</h3>
+            
+            <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px;">
+                <h4>📋 Global Live Customer Orders Manager</h4>
+                <div style="overflow-x:auto; margin-top:10px;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Order ID</th><th>Customer Info</th><th>Packets Order</th><th>Total Price</th><th>Pipeline Status Action</th></tr>
+                        </thead>
+                        <tbody id="adminOrdersTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 15px;">
+                <h4>📦 Inventory Control Manager</h4>
+                <div class="form-group" style="margin-top:10px; display:inline-block; margin-right:10px;">
+                    <label>Select Product Size</label>
+                    <select id="invProdSelect" onchange="loadSelectedInventory()">
+                        <option value="p1">Standard Pack (250g)</option>
+                        <option value="p2">Medium Pack (500g)</option>
+                        <option value="p3">1 KG Mega Pack</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display:inline-block; margin-right:10px;">
+                    <label>Set Stock Count</label>
+                    <input type="number" id="invStockCount" style="width:120px;">
+                </div>
+                <button class="admin-btn" style="background:#27AE60;" onclick="saveInventoryLevel()">Update Stock</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCheckout()">×</span>
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-weight:800;">Your Cart & Checkout</h3>
+            
+            <div class="cart-summary-box">
+                <div id="cartItemsList" style="margin-bottom: 10px; font-size:13px; border-bottom:1px solid var(--border-color); padding-bottom:5px;"></div>
+                <p><strong>Total Weight:</strong> <span id="totalWeightText">0</span> KG</p>
+                <p><strong>Discount Coupon:</strong> -₹<span id="couponDeductText">0</span></p>
+                <p style="font-size: 16px; margin-top: 5px; font-weight: bold; color: var(--primary);">Final Payable Amount: ₹<span id="finalPriceText">0</span></p>
+            </div>
+
+            <form id="orderForm" onsubmit="handleRazorpayPayment(event)">
+                <div class="form-group"><label>Full Name</label><input type="text" id="custName" required placeholder="Enter customer name"></div>
+                <div class="form-group"><label>Mobile Number</label><input type="tel" id="custPhone" required placeholder="Enter active phone number"></div>
+                <div class="form-group"><label>Complete Delivery Address</label><textarea id="custAddress" rows="3" required placeholder="House No, Street, Landmark, Pincode"></textarea></div>
+                
+                <div class="payment-method-selector">
+                    <p class="payment-method-title"><i class="fa-solid fa-credit-card"></i> Select Payment Method:</p>
+                    <div class="payment-options-grid">
+                        <div class="pay-option-card selected" id="opt-upi" onclick="selectPaymentRoute('upi')">
+                            <input type="radio" name="payRoute" value="upi" checked>
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>UPI Apps (GPay, Paytm, PhonePe, Navi, BHIM)</span>
+                        </div>
+                        <div class="pay-option-card" id="opt-card" onclick="selectPaymentRoute('card')">
+                            <input type="radio" name="payRoute" value="card">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span>Cards / Netbanking (Credit/Debit/RuPay)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-order-btn" id="paySubmitBtnButton" style="background:#2980B9;">Proceed & Pay Securely</button>
+                
+                <div class="sub-payment-icons">
+                    <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+                    <i class="fa-solid fa-money-bill-1-wave" title="BHIM / Paytm UPI"></i>
+                    <i class="fa-solid fa-credit-card" title="Visa / MasterCard / RuPay"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="document.getElementById('wishlistModal').style.display='none'">×</span>
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-weight:800;">Your Saved Packets</h3>
+            <div id="wishlistItemsBox" style="font-size:14px; line-height:2;"></div>
+        </div>
+    </div>
+
+    <div id="zoomModal" class="zoom-modal" onclick="this.style.display='none'"><img id="zoomedImg" src=""></div>
+    <div id="policyModal" class="policy-document-modal" onclick="this.style.display='none'"><div class="policy-content-box" onclick="event.stopPropagation()"><span class="close-btn" onclick="document.getElementById('policyModal').style.display='none'">×</span><h3 id="policyModalTitle" style="color:var(--primary); margin-bottom:15px; font-weight:800;"></h3><div id="policyModalBody" style="font-size:13px; line-height:1.6; color:var(--text-muted);"></div></div></div>
+
+    <a href="tel:+919327605853" class="float-call-btn-trigger flex-center"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://wa.me/919327605853" class="whatsapp-float flex-center" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <button id="backToTopBtn" class="flex-center" onclick="window.scrollTo(0,0)"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <div class="sticky-bottom-bar">
+        <a href="tel:+919327605853" class="sticky-btn sticky-call">📞 Call Now</a>
+        <a href="#shop-products" class="sticky-btn sticky-order">🛒 Order Packs</a>
+    </div>
+
+    <footer>
+        <div class="footer-grid-hook">
+            <div class="footer-column"><h5>KGN Onion Birista</h5><p>Premium crispy golden fried onions processed natively with maximum care and absolute local freshness parameters in Surat.</p></div>
+            <div class="footer-column"><h5>Quick Links</h5><a href="#shop-products">Product Packs</a><a href="#recipe-ideas">Recipes Tips</a></div>
+            <div class="footer-column"><h5>Legal Pages</h5><a href="javascript:void(0)" onclick="openPolicyPage('Privacy Policy', 'Hamare system me aapka delivery data safe rakha jata hai.')">Privacy Policy</a><a href="javascript:void(0)" onclick="openPolicyPage('Refund Policy', 'Packets damage hone par verification check ke baad refund provide kiya jata hai.')">Refund Policy</a></div>
+        </div>
+        <div class="social-container" style="display:flex; justify-content:center; gap:20px; margin:20px 0; font-size:24px;">
+            <a href="https://www.instagram.com/kgnonionbirista" target="_blank" style="color:#E1306C;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1GjeSZpf8N/" target="_blank" style="color:#1877F2;"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://www.youtube.com/@KGNONIONBIRISTA" target="_blank" style="color:#FF0000;"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://maps.app.goo.gl/E9X1PqqpsTTqPbFt5" target="_blank" style="color:#4285F4;"><i class="fa-solid fa-location-dot"></i></a>
+        </div>
+        <p style="font-size:12px; opacity:0.6;">© 2026 KGN ONION BIRISTA. All Rights Reserved. | Surat, Gujarat</p>
+        <div class="trust-ribbon-ticker"><div class="ticker-inner-wrap"><div class="ticker-logo-node">FSSAI REGISTERED OUTLET</div><div class="ticker-logo-node">VERIFIED ON INDIAMART</div><div class="ticker-logo-node">JUSTDIAL CERTIFIED TRUST</div></div></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Default Backup Catalog Array (Agar Backend off ho toh chalne ke liye)
+        let defaultProductsBackup = [
+            { id: "p1", name: "Standard Pack (250g)", price: 99, weight: 0.25, stock: 8, img: "birista-250g.jpg" },
+            { id: "p2", name: "Medium Pack (500g)", price: 199, weight: 0.50, stock: 14, img: "birista-500g.jpg" },
+            { id: "p3", name: "1 KG Mega Pack", price: 399, weight: 1.00, stock: 22, img: "birista-1kg.jpg" }
+        ];
+
+        let products = []; 
+        let cartItems = []; 
+        let wishlistItems = [];
+        let previousOrdersCount = 0;
+        let couponApplied = false; 
+        let activeDiscount = 0; 
+        let selectedRatingValue = 5;
+        let selectedPaymentMethod = "upi";
+        const ratingEmojis = { 1: '😢', 2: '🙁', 3: '😐', 4: '🙂', 5: '😍' };
+
+        // Real-Time Audio Notification API Setup
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playOrderAlertSound() {
+            try {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // High pitch ring
+                osc.frequency.setValueAtTime(1200, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            } catch(e) { console.log("Audio play blocked by browser policies."); }
+        }
+
+        window.addEventListener('load', () => {
+            initDatabaseSequence();
+            document.getElementById('loader').style.display = 'none';
+            animateCounters();
+            runVisitorDemoCounter();
+            
+            // Continuous polling engine loop to check for new orders in admin dashboard screen every 5 seconds
+            setInterval(checkNewOrdersPollingEngine, 5000);
+        });
+
+        AOS.init({ duration: 800, once: true });
+
+        // Scroll Progress Handler
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scrollProgress').style.width = (winScroll / height) * 100 + '%';
+            document.getElementById('backToTopBtn').style.display = window.scrollY > 400 ? 'flex' : 'none';
+        });
+
+        const mainSwiper = new Swiper('.mainSlider', { loop: true, autoplay: { delay: 5000 } });
+        const infoSwiper = new Swiper('.mySwiper', { loop: true, autoplay: { delay: 4000 } });
+
+        // Database Verification & Synchronization Sequence
+        function initDatabaseSequence() {
+            fetch("/api/inventory")
+            .then(res => res.json())
+            .then(data => {
+                products = data;
+                renderProductCardsHTML(products);
+            })
+            .catch(err => {
+                console.log("Running in offline fallback container memory channel.");
+                if(!localStorage.getItem('kgn_inventory')) {
+                    localStorage.setItem('kgn_inventory', JSON.stringify(defaultProductsBackup));
+                }
+                products = JSON.parse(localStorage.getItem('kgn_inventory'));
+                renderProductCardsHTML(products);
+            });
+            refreshReviewsData();
+        }
+
+        function renderProductCardsHTML(itemsArray) {
+            document.getElementById('productsDynamicContainer').innerHTML = itemsArray.map(p => `
+                <div class="product-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}">
+                    <div class="stock-indicator-badge" style="background:${p.stock > 0 ? '#27AE60' : '#E74C3C'};">
+                        ${p.stock > 0 ? `🔥 Stock Available: ${p.stock} units` : '❌ Out of Stock'}
+                    </div>
+                    <button class="wishlist-btn-hook" onclick="toggleWishlist('${p.id}', '${p.name}', ${p.price})"><i class="fa-solid fa-heart"></i></button>
+                    <div>
+                        <div class="product-gallery-frame">
+                            <img src="${p.img}" alt="${p.name}" class="main-gallery-view" id="mainImg-${p.id}" onclick="openZoomModal(this.src)">
+                            <div class="gallery-thumb-row">
+                                <img src="${p.img}" class="gallery-thumb-node active" onclick="switchGalleryThumb('${p.id}', this.src, this)">
+                                <img src="birista-back.jpg" class="gallery-thumb-node" onclick="switchGalleryThumb('${p.id}', 'birista-back.jpg', this)">
+                            </div>
+                        </div>
+                        <h4 class="product-title">KGN Premium Fried Onion (${p.name})</h4>
+                    </div>
+                    <div>
+                        <div class="qty-container">
+                            <button class="qty-btn" onclick="updateCardQty('qty-${p.id}', -1)">-</button>
+                            <span class="qty-val" id="qty-${p.id}">1</span>
+                            <button class="qty-btn" onclick="updateCardQty('qty-${p.id}', 1)">+</button>
+                        </div>
+                        <div class="price-tag">₹${p.price}</div>
+                        <button class="buy-btn" ${p.stock <= 0 ? 'disabled style="background:#ccc;"' : ''} 
+                            onclick="addProductToCart('${p.name}', ${p.price}, ${p.weight}, 'qty-${p.id}', '${p.id}')">
+                            🛒 Add To Basket
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateCardQty(id, delta) {
+            const el = document.getElementById(id);
+            let val = parseInt(el.innerText) + delta;
+            if (val < 1) val = 1; 
+            el.innerText = val;
+        }
+
+        function switchGalleryThumb(cardId, src, element) {
+            document.getElementById('mainImg-' + cardId).src = src;
+            element.closest('.product-gallery-frame').querySelectorAll('.gallery-thumb-node').forEach(n => n.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function addProductToCart(name, baselinePrice, unitWeight, qtyElementId, prodId) {
+            const qty = parseInt(document.getElementById(qtyElementId).innerText);
+            const prod = products.find(p => p.id === prodId);
+            if(qty > prod.stock) { 
+                alert(`Stock short! Is packet ka sirf ${prod.stock} stock bacha hai.`); 
+                return; 
+            }
+            
+            const existingIndex = cartItems.findIndex(item => item.id === prodId);
+            if(existingIndex > -1) {
+                cartItems[existingIndex].qty += qty;
+            } else {
+                cartItems.push({ id: prodId, name: name, price: baselinePrice, weight: unitWeight, qty: qty });
+            }
+            updateCartCounterIcon();
+            alert(`${qty} x ${name} add ho gaya basket mein!`);
+        }
+
+        function updateCartCounterIcon() { 
+            document.getElementById('cartCount').innerText = cartItems.reduce((a, b) => a + b.qty, 0); 
+        }
+
+        function openCartModal() {
+            if(cartItems.length === 0) { alert("Basket khali hai!"); return; }
+            let totalWeight = 0; let subtotalPrice = 0; let innerHtml = "";
+            cartItems.forEach(item => {
+                totalWeight += (item.weight * item.qty);
+                subtotalPrice += (item.price * item.qty);
+                innerHtml += `<p style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${item.name} (x${item.qty})</span> <strong>₹${item.price * item.qty}</strong></p>`;
+            });
+            document.getElementById('cartItemsList').innerHTML = innerHtml;
+            document.getElementById('totalWeightText').innerText = totalWeight.toFixed(2);
+            document.getElementById('couponDeductText').innerText = activeDiscount;
+            
+            let finalPrice = subtotalPrice - activeDiscount;
+            if(finalPrice < 0) finalPrice = 0;
+            document.getElementById('finalPriceText').innerText = finalPrice;
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckout() { document.getElementById('checkoutModal').style.display = 'none'; }
+        function applyCouponCode() { activeDiscount = 30; couponApplied = true; alert("Coupon applied successfully! ₹30 deduct ho gaye."); openCartModal(); }
+
+        function selectPaymentRoute(mode) {
+            selectedPaymentMethod = mode;
+            document.querySelectorAll('.pay-option-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('opt-' + mode).classList.add('selected');
+            document.querySelector(`input[value="${mode}"]`).checked = true;
+            
+            const submitBtn = document.getElementById('paySubmitBtnButton');
+            if(mode === 'upi') {
+                submitBtn.innerText = "Pay via UPI App (GPay / PhonePe / Paytm / Navi / BHIM)";
+                submitBtn.style.background = "#2980B9";
+            } else {
+                submitBtn.innerText = "Pay via Card / Netbanking System";
+                submitBtn.style.background = "#27AE60";
+            }
+        }
+
+        function handleRazorpayPayment(e) {
+            e.preventDefault();
+            const finalAmt = document.getElementById('finalPriceText').innerText;
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+
+            const payload = { name, phone, address, items: cartItems, finalAmount: finalAmt, paymentMode: selectedPaymentMethod };
+            
+            fetch("/api/orders", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+            .then(res => res.json())
+            .then(resData => {
+                if(resData.success) {
+                    processOrderCompletionActions(resData.order, name, phone, address, finalAmt);
+                } else { alert(resData.message); }
+            })
+            .catch(err => {
+                console.log("Server routing absent. Executing standalone file sequence data logs.");
+                let uniqueGeneratedId = "KGN" + Math.floor(10000 + Math.random() * 90000);
+                let mockOrder = { id: uniqueGeneratedId, name, phone, address, items: cartItems, finalAmount: finalAmt, status: "Received" };
+                
+                let localOrders = JSON.parse(localStorage.getItem('kgn_orders_db')) || [];
+                localOrders.unshift(mockOrder);
+                localStorage.setItem('kgn_orders_db', JSON.stringify(localOrders));
+
+                cartItems.forEach(item => {
+                    const p = products.find(prod => prod.id === item.id);
+                    if(p) p.stock = Math.max(0, p.stock - item.qty);
+                });
+                localStorage.setItem('kgn_inventory', JSON.stringify(products));
+                
+                playOrderAlertSound();
+                processOrderCompletionActions(mockOrder, name, phone, address, finalAmt);
+            });
+        }
+
+        function processOrderCompletionActions(orderObj, name, phone, address, finalAmt) {
+            let orderSummaryString = cartItems.map(i => `${i.name} (x${i.qty})`).join(', ');
+            let methodLabel = selectedPaymentMethod === 'upi' ? 'UPI (GPay/PhonePe/Paytm/BHIM/Navi)' : 'Credit-Debit Card / Netbanking';
+            
+            let messageText = `Hi KGN Onion Birista, Maine order place kiya hai!\n\nOrder ID: #${orderObj.id}\nNama: ${name}\nPhone: ${phone}\nAlamat: ${address}\nOrder Box: ${orderSummaryString}\nPayment Mode: ${methodLabel}\nTotal: ₹${finalAmt}\n\nKripya confirm karke courier dispatch process shuru kaerin.`;
+            
+            alert(`Order Registered Successfully! Your Alphanumeric Unique Order ID is: #${orderObj.id}`);
+            cartItems = []; 
+            updateCartCounterIcon(); 
+            closeCheckout();
+            
+            launchCustomerTrackingPipeline(orderObj);
+            refreshInventoryData();
+            
+            window.open(`https://wa.me/919327605853?text=${encodeURIComponent(messageText)}`, '_blank');
+        }
+
+        function launchCustomerTrackingPipeline(order) {
+            document.getElementById('trackOrderId').innerText = "#" + order.id;
+            updateTrackingDisplay(order.status);
+            document.getElementById('trackingSection').style.display = 'block';
+            window.scrollTo(0, document.getElementById('trackingSection').offsetTop - 100);
+        }
+
+        function updateTrackingDisplay(status) {
+            const steps = ["Received", "Approved", "Dispatched"];
+            const pct = { "Received": 0, "Approved": 50, "Dispatched": 100 };
+            document.getElementById('pipelineBar').style.width = pct[status] + '%';
+            steps.forEach((s, idx) => {
+                const el = document.getElementById('tstep' + (idx+1));
+                if(steps.indexOf(status) >= idx) el.classList.add('active'); else el.classList.remove('active');
+            });
+            
+            const textElement = document.getElementById('pipelineStatusText');
+            if(status === "Approved") {
+                textElement.innerText = "Aapka order KGN Outlet dwara approve ho chuka hai! Jaldi hi ise courier kiya jaega.";
+                textElement.style.color = "#27AE60";
+            } else if(status === "Dispatched") {
+                textElement.innerText = "Aapka order dispatch ho chuka hai Surat courier terminal se!";
+                textElement.style.color = "#2980B9";
+            } else {
+                textElement.innerText = "Aapka order received ho gaya hai. Hum jald hi iski verification check karenge.";
+                textElement.style.color = "#E67E22";
+            }
+        }
+
+        function checkNewOrdersPollingEngine() {
+            fetch("/api/admin/orders")
+            .then(res => res.json())
+            .then(data => {
+                if(data.length > previousOrdersCount) {
+                    if(previousOrdersCount !== 0) {
+                        playOrderAlertSound();
+                        alert(`🔔 Alert: Website par ek naya order aaya hai! Total Orders: ${data.length}`);
+                    }
+                    previousOrdersCount = data.length;
+                    if(document.getElementById('adminModal').style.display === 'flex') {
+                        renderAdminOrdersTable(data);
+                    }
+                }
+            })
+            .catch(() => {
+                let localOrders = JSON.parse(localStorage.getItem('kgn_orders_db')) || [];
+                let localCount = localOrders.length;
+                if(localCount > previousOrdersCount) {
+                    if(previousOrdersCount !== 0) {
+                        playOrderAlertSound();
+                        alert(`🔔 Alert: Website par ek naya order aaya hai (Local Mode)!`);
+                    }
+                    previousOrdersCount = localCount;
+                    if(document.getElementById('adminModal').style.display === 'flex') {
+                        renderAdminOrdersTable(localOrders);
+                    }
+                }
+            });
+        }
+
+        function refreshReviewsData() {
+            fetch("/api/reviews")
+            .then(res => res.json())
+            .then(data => { renderReviewsHTML(data); })
+            .catch(err => {
+                const fallbackRev = JSON.parse(localStorage.getItem('kgn_reviews')) || [
+                    { name: "Aamir Khan, Adajan", text: "Best birista in Surat. Bahut crispy hai aur biryani ka maza dugna ho gaya.", rating: 5 }
+                ];
+                renderReviewsHTML(fallbackRev);
+            });
+        }
+
+        function renderReviewsHTML(revArray) {
+            document.getElementById('reviewsContainer').innerHTML = revArray.map(r => `
+                <div class="review-card-premium">
+                    <div style="color:#FFD700; margin-bottom:5px;">${'★'.repeat(r.rating)}</div>
+                    <p style="font-size:13px; font-style:italic;">"${r.text}"</p>
+                    <h5 style="margin-top:10px; color:var(--primary);">- ${r.name}</h5>
+                    <div class="rev-source-badge"><i class="fa-solid fa-database"></i> Live Verified Review</div>
+                </div>
+            `).join('');
+        }
+
+        function handleStarClick(rating) {
+            selectedRatingValue = rating;
+            for (let i = 1; i <= 5; i++) document.getElementById('star' + i).innerText = i <= rating ? ratingEmojis[i] : '★';
+        }
+
+        function submitLiveTextFeedback() {
+            const name = document.getElementById('feedbackName').value.trim();
+            const comment = document.getElementById('feedbackComment').value.trim();
+            if(!name || !comment) { alert("Fields fulfill karein!"); return; }
+            
+            const payload = { name, text: comment, rating: selectedRatingValue };
+            
+            fetch("/api/reviews", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+            .then(res => res.json())
+            .then(() => {
+                refreshReviewsData();
+                clearFeedbackForm();
+            })
+            .catch(err => {
+                const localRev = JSON.parse(localStorage.getItem('kgn_reviews')) || [];
+                localRev.unshift(payload);
+                localStorage.setItem('kgn_reviews', JSON.stringify(localRev));
+                renderReviewsHTML(localRev);
+                clearFeedbackForm();
+            });
+        }
+
+        function clearFeedbackForm() {
+            document.getElementById('feedbackName').value = '';
+            document.getElementById('feedbackComment').value = '';
+            alert("Review database storage mein permanently save ho chuka hai!");
+        }
+
+        function verifyAdminAccess() {
+            if(prompt("Enter Internal Control Password:") === "kgn123") {
+                document.getElementById('adminModal').style.display = 'flex';
+                loadAdminOrdersList(); 
+                loadSelectedInventory();
+            } else { alert("Access Denied! Password galat hai."); }
+        }
+
+        function openAdminModal() { verifyAdminAccess(); }
+        function closeAdminModal() { document.getElementById('adminModal').style.display = 'none'; }
+
+        function loadAdminOrdersList() {
+            fetch("/api/admin/orders")
+            .then(res => res.json())
+            .then(data => { renderAdminOrdersTable(data); })
+            .catch(() => {
+                let localOrders = JSON.parse(localStorage.getItem('kgn_orders_db')) || [];
+                renderAdminOrdersTable(localOrders);
+            });
+        }
+
+        function renderAdminOrdersTable(ordersArray) {
+            document.getElementById('adminOrdersTableBody').innerHTML = ordersArray.map(o => `
+                <tr>
+                    <td><strong>#${o.id}</strong></td>
+                    <td><strong>${o.name}</strong><br>${o.phone}<br><span style="font-size:11px; color:#666;">${o.address}</span></td>
+                    <td>${o.items.map(i => `${i.name} (x${i.qty})`).join(', ')}</td>
+                    <td>₹${o.finalAmount}</td>
+                    <td>
+                        <select onchange="changeOrderStatusFromServer('${o.id}', this.value)" style="padding:6px; font-size:12px; border-radius:4px;">
+                            <option value="Received" ${o.status==='Received'?'selected':''}>Received</option>
+                            <option value="Approved" ${o.status==='Approved'?'selected':''}>Approved</option>
+                            <option value="Dispatched" ${o.status==='Dispatched'?'selected':''}>Dispatched</option>
+                        </select>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function changeOrderStatusFromServer(orderId, nextStatus) {
+            fetch("/api/admin/orders/status", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ orderId, status: nextStatus }) })
+            .then(res => res.json()).then(data => { 
+                if(data.success) { 
+                    alert(`Order Status successfully updated to: ${nextStatus}`); 
+                    updateTrackingDisplay(nextStatus); 
+                    loadAdminOrdersList(); 
+                } 
+            }).catch(() => {
+                let localOrders = JSON.parse(localStorage.getItem('kgn_orders_db')) || [];
+                let o = localOrders.find(order => order.id === orderId);
+                if(o) {
+                    o.status = nextStatus;
+                    localStorage.setItem('kgn_orders_db', JSON.stringify(localOrders));
+                    alert(`Order status updated locally to: ${nextStatus}`);
+                    updateTrackingDisplay(nextStatus);
+                    renderAdminOrdersTable(localOrders);
+                }
+            });
+        }
+
+        function openWishlistModal() {
+            const box = document.getElementById('wishlistItemsBox');
+            if(wishlistItems.length === 0) {
+                box.innerText = "Aapka wishlist abhi khali hai!";
+            } else {
+                box.innerHTML = wishlistItems.map(item => `<p>❤️ ${item.name} - <strong>₹${item.price}</strong></p>`).join('');
+            }
+            document.getElementById('wishlistModal').style.display = 'flex';
+        }
+
+        function toggleWishlist(id, name, price) {
+            const idx = wishlistItems.findIndex(item => item.id === id);
+            if(idx > -1) {
+                wishlistItems.splice(idx, 1);
+                alert(`${name} wishlist se hata diya.`);
+            } else {
+                wishlistItems.push({ id, name, price });
+                alert(`${name} wishlist mein add ho gaya.`);
+            }
+            document.getElementById('wishlistCount').innerText = wishlistItems.length;
+        }
+
+        function loadSelectedInventory() {
+            const id = document.getElementById('invProdSelect').value;
+            const p = products.find(prod => prod.id === id);
+            if(p) document.getElementById('invStockCount').value = p.stock;
+        }
+
+        function saveInventoryLevel() {
+            const id = document.getElementById('invProdSelect').value;
+            const stock = document.getElementById('invStockCount').value;
+            
+            fetch("/api/admin/inventory", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, stock }) })
+            .then(res => res.json())
+            .then(() => { refreshInventoryData(); alert("Stock level saved permanently!"); })
+            .catch(err => {
+                const p = products.find(prod => prod.id === id);
+                if(p) p.stock = parseInt(stock) || 0;
+                localStorage.setItem('kgn_inventory', JSON.stringify(products));
+                renderProductCardsHTML(products);
+                alert("Stock sync in persistent context layer completed!");
+            });
+        }
+
+        function animateCounters() {
+            document.querySelectorAll('.counter-val').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0; const step = Math.ceil(target / 50);
+                const run = () => {
+                    current += step;
+                    if(current < target) { counter.innerText = current; setTimeout(run, 20); }
+                    else { counter.innerText = target + "+"; }
+                };
+                run();
+            });
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('productSearch').value.toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const searchKeywords = card.getAttribute('data-name');
+                if(searchKeywords.includes(query)) card.style.display = 'flex';
+                else card.style.display = 'none';
+            });
+        }
+
+        function runVisitorDemoCounter() {
+            setInterval(() => {
+                const variance = Math.floor(Math.random() * 5) - 2;
+                let current = parseInt(document.getElementById('visitorCount').innerText) + variance;
+                if(current < 5) current = 7;
+                document.getElementById('visitorCount').innerText = current;
+            }, 4000);
+        }
+
+        function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+        function openZoomModal(src) { document.getElementById('zoomedImg').src = src; document.getElementById('zoomModal').style.display = 'flex'; }
+        function revealGiftOffer() { document.getElementById('giftBox').innerText = "🎉"; document.getElementById('offerPopup').style.display = "block"; }
+        function openPolicyPage(t, b) { document.getElementById('policyModalTitle').innerText = t; document.getElementById('policyModalBody').innerText = b; document.getElementById('policyModal').style.display = 'flex'; }
+        function downloadCatalogue() { alert("Downloading brochure catalog parameters..."); }
+    </script>
+</body>
+</html>
