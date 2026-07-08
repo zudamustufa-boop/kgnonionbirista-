@@ -1,0 +1,12 @@
+{
+  "name": "kgn-onion-birista",
+  "version": "1.0.0",
+  "description": "KGN Onion Birista Online Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
