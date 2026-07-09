@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>KGN Onion Birista - Premium Crispy Fried Onions | Order Online Surat</title>
-    <meta name="description" content="Order 100% fresh, crispy, golden fried onions online from KGN Onion Birista. Perfect for Biryani, Korma, and Gravies. Hygienically packed packs delivered across Surat. Live tracking available.">
+    <meta name="description" content="Order 100% fresh, crispy, golden fried onions online from KGN Onion Birista. Perfect for Biryani, Korma, and Gravies.">
+    <meta name="keywords" content="Fried Onion online, buy birista Surat, crispy fried onion, KGN Birista">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -20,7 +22,6 @@
             --text-muted: #6E5A4E;
             --border-color: #EFEAE4;
             --card-shadow: 0 10px 30px rgba(110, 54, 15, 0.05);
-            --nav-bg: rgba(255, 255, 255, 0.95);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
@@ -28,234 +29,344 @@
 
         .section-padding { padding: 40px 5%; }
         .container { max-width: 1200px; margin: 0 auto; }
-        .title-main { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 15px; }
+        .title-main { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .title-main::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto 0; }
         .subtitle { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
 
-        header { background: var(--nav-bg); box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 900; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-link { text-decoration: none; display: flex; align-items: center; gap: 12px; }
-        .brand-text h1 { color: var(--primary); font-size: 24px; font-weight: 900; }
-        .brand-text p { font-size: 10px; color: var(--primary-light); font-weight: 700; text-transform: uppercase; }
+        /* Ticker & Header */
+        .top-ticker { background: linear-gradient(45deg, var(--primary), #4A2206); color: #fff; font-size: 13px; text-align: center; padding: 10px; font-weight: 600; }
+        header { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 900; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand h1 { color: var(--primary); font-size: 24px; font-weight: 900; }
 
-        /* Tracking Box Styling */
-        .tracking-box { background: var(--bg-card); border: 2px dashed var(--primary-light); border-radius: 16px; padding: 25px; margin: 20px auto 40px auto; max-width: 500px; text-align: center; box-shadow: var(--card-shadow); }
-        .tracking-box input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; text-align: center; }
-        .tracking-box button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
-        .tracking-box button:hover { background: var(--accent); }
-        .status-badge { display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: bold; margin-top: 15px; font-size: 18px; }
-        .status-pending { background: #FFF3CD; color: #856404; }
-        .status-approved { background: #D4EDDA; color: #155724; }
-        .status-dispatched { background: #CCE5FF; color: #004085; }
+        /* Grid Layouts */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .product-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; box-shadow: var(--card-shadow); text-align: center; }
+        .product-card h3 { margin: 15px 0 10px; color: var(--text-dark); }
+        .price { font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 15px; }
+        
+        .btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        .btn:hover { background: var(--accent); }
 
-        /* Products Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; }
-        .product-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--card-shadow); }
-        .product-card h3 { color: var(--primary); font-size: 20px; margin: 15px 0 10px; }
-        .product-price { font-size: 22px; font-weight: bold; color: var(--accent); margin-bottom: 15px; }
-        .btn-add { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; }
+        /* Tracking & Admin Boxes */
+        .interactive-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin: 30px auto; max-width: 600px; box-shadow: var(--card-shadow); }
+        .interactive-box input, .interactive-box textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 8px; font-size: 15px; }
+        
+        /* Badges */
+        .status-badge { display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; margin-top: 10px; }
+        .status-Received { background: #FFF3CD; color: #856404; }
+        .status-Approved { background: #D4EDDA; color: #155724; }
+        .status-Dispatched { background: #CCE5FF; color: #004085; }
 
-        /* Cart & Form Section */
-        .cart-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-top: 40px; box-shadow: var(--card-shadow); }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary); }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; }
-        .btn-order { background: #25D366; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 18px; margin-top: 15px; }
+        /* Admin Table */
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+        .admin-table th, .admin-table td { border: 1px solid var(--border-color); padding: 10px; text-align: left; }
+        .admin-table th { background: var(--primary); color: white; }
+        
+        .nav-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .tab-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: var(--primary); color: white; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <div class="top-ticker"><i class="fa-solid fa-truck"></i> Fast Delivery Across Surat | 100% Premium Quality Birista</div>
+
     <header>
-        <a href="#" class="brand-link">
-            <div class="brand-text">
-                <h1>KGN Birista</h1>
-                <p>Premium Quality Fried Onions</p>
-            </div>
-        </a>
+        <div class="brand"><h1>🧅 KGN Birista</h1></div>
+        <div>
+            <a href="#products-section" class="tab-btn">Products</a>
+            <a href="#tracking-section" class="tab-btn">Track Order</a>
+            <a href="#admin-section" class="tab-btn"><i class="fa-solid fa-lock"></i> Admin</a>
+        </div>
     </header>
 
     <main class="container section-padding">
-        
-        <!-- Live Order Tracking Area -->
-        <div class="tracking-box">
-            <h2>📦 Apna Order Track Karein</h2>
-            <p style="color: var(--text-muted); font-size: 14px;">Order status live dekhne ke liye apna phone number dalein:</p>
+
+        <section id="products-section">
+            <div class="title-main">Hamare Products</div>
+            <p class="subtitle">Bina kisi jhanjhat ke restaurant jaisa taste ghar par paayein</p>
+            <div class="products-grid" id="products-container">
+                </div>
+        </section>
+
+        <section id="cart-section" class="interactive-box" style="display:none;">
+            <h3>🛒 Aapka Cart</h3>
+            <div id="cart-items-list" style="margin: 15px 0;"></div>
+            <h4>Total Amount: ₹<span id="cart-total-amount">0</span></h4>
+            
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border-color);">
+            
+            <h3>📋 Delivery Details</h3>
+            <input type="text" id="custName" placeholder="Aapka Naam (Full Name)">
+            <input type="number" id="custPhone" placeholder="Mobile Number (10 Digits)">
+            <textarea id="custAddress" rows="3" placeholder="Poora Pata (Delivery Address in Surat)"></textarea>
+            <button class="btn" onclick="placeOrderNow()">Order Confirm Karein (COD)</button>
+        </section>
+
+        <section id="tracking-section" class="interactive-box" style="margin-top: 50px;">
+            <h3>📦 Apna Order Track Karein</h3>
+            <p style="color: var(--text-muted); font-size: 14px;">Live status dekhne ke liye registered phone number dalein:</p>
             <input type="number" id="trackPhone" placeholder="Enter Registered Phone Number">
-            <br>
-            <button onclick="trackCustomerOrder()">Live Status Dekhein</button>
+            <button class="btn" onclick="trackCustomerOrder()">Live Status Dekhein</button>
             <div id="trackResult" style="margin-top: 15px;"></div>
-        </div>
+        </section>
 
-        <!-- Products Section -->
-        <div class="title-main">Hamare Products</div>
-        <p class="subtitle">100% Fresh aur Crispy Fried Onion (Birista)</p>
+        <section id="reviews-section" style="margin-top: 50px;">
+            <div class="title-main">Customer Feedback</div>
+            <div id="reviews-container" style="max-width: 600px; margin: 0 auto 20px;"></div>
+            <div class="interactive-box">
+                <h4>Apna Review Likhein</h4>
+                <input type="text" id="revName" placeholder="Aapka Naam">
+                <textarea id="revText" placeholder="Aapko hamara Birista kaisa laga?"></textarea>
+                <input type="number" id="revRating" min="1" max="5" placeholder="Rating (1 se 5)">
+                <button class="btn" onclick="submitReview()">Review Submit Karein</button>
+            </div>
+        </section>
 
-        <div class="products-grid">
-            <!-- Pack 1 -->
-            <div class="product-card">
-                <div style="font-size: 50px;">🧅</div>
-                <h3>Premium Birista - 250g</h3>
-                <div class="product-price">₹100</div>
-                <button class="btn-add" onclick="addToCart('250g Pack', 100)">Add To Cart</button>
+        <section id="admin-section" class="interactive-box" style="max-width: 900px; margin-top: 60px;">
+            <h3>🔐 Admin Control Panel</h3>
+            <div id="admin-login-block">
+                <input type="password" id="adminPass" placeholder="Enter Admin Security Password">
+                <button class="btn" onclick="verifyAdminAccess()">Login Dashboard</button>
             </div>
-            <!-- Pack 2 -->
-            <div class="product-card">
-                <div style="font-size: 50px;">🧅</div>
-                <h3>Premium Birista - 500g</h3>
-                <div class="product-price">₹200</div>
-                <button class="btn-add" onclick="addToCart('500g Pack', 200)">Add To Cart</button>
+            
+            <div id="admin-dashboard-block" style="display: none; margin-top: 20px;">
+                <div class="nav-tabs">
+                    <button class="tab-btn active" onclick="loadAdminOrders()">Orders Handle Karein</button>
+                    <button class="tab-btn" onclick="loadAdminInventory()">Stock Update Karein</button>
+                </div>
+                <div id="admin-content-area"></div>
             </div>
-            <!-- Pack 3 -->
-            <div class="product-card">
-                <div style="font-size: 50px;">🧅</div>
-                <h3>Premium Birista - 1kg</h3>
-                <div class="product-price">₹400</div>
-                <button class="btn-add" onclick="addToCart('1kg Pack', 400)">Add To Cart</button>
-            </div>
-        </div>
-
-        <!-- Checkout / Cart Form -->
-        <div class="cart-section">
-            <h2>🛒 Aapka Cart & Delivery Details</h2>
-            <div id="cartItems" style="margin: 15px 0; color: var(--text-muted);">Cart khali hai. Product add karein!</div>
-            <div style="font-size: 18px; font-weight: bold; margin-bottom: 20px;" id="cartTotal">Total Amount: ₹0</div>
-
-            <div class="form-group">
-                <label>Apna Naam</label>
-                <input type="text" id="custName" placeholder="Full Name dalein">
-            </div>
-            <div class="form-group">
-                <label>Mobile Number</label>
-                <input type="number" id="custPhone" placeholder="Mobile Number dalein">
-            </div>
-            <div class="form-group">
-                <label>Pura Pata (Address)</label>
-                <textarea id="custAddress" rows="3" placeholder="Ghar ka pata dalein"></textarea>
-            </div>
-
-            <button class="btn-order" onclick="submitOrder()">Place Order (WhatsApp)</button>
-        </div>
+        </section>
 
     </main>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        let cart = {};
-        let total = 0;
+        AOS.init();
+        let globalCart = {};
+        let currentAdminPassword = "";
 
-        function addToCart(packName, price) {
-            if(cart[packName]) {
-                cart[packName].qty += 1;
-            } else {
-                cart[packName] = { price: price, qty: 1 };
-            }
-            updateCartDisplay();
-        }
+        window.addEventListener('load', () => {
+            fetchInventory();
+            fetchReviews();
+        });
 
-        function updateCartDisplay() {
-            const cartDiv = document.getElementById('cartItems');
-            if(Object.keys(cart).length === 0) {
-                cartDiv.innerHTML = "Cart khali hai.";
-                document.getElementById('cartTotal').innerText = "Total Amount: ₹0";
-                return;
-            }
+        // 1. Fetch Products
+        async function fetchInventory() {
+            const res = await fetch('/api/inventory');
+            const products = await res.json();
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
             
-            let html = "";
-            total = 0;
-            for(let key in cart) {
-                let cost = cart[key].price * cart[key].qty;
-                total += cost;
-                html += `<p>✅ ${key} x ${cart[key].qty} = ₹${cost}</p>`;
-            }
-            cartDiv.innerHTML = html;
-            document.getElementById('cartTotal').innerText = "Total Amount: ₹" + total;
+            products.forEach(p => {
+                container.innerHTML += `
+                    <div class="product-card" data-aos="fade-up">
+                        <h3>${p.name}</h3>
+                        <p class="price">₹${p.price}</p>
+                        <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">Stock Left: ${p.stock} units</p>
+                        <button class="btn" onclick="addToCart('${p.id}', '${p.name}', ${p.price})">Add To Cart</button>
+                    </div>
+                `;
+            });
         }
 
-        // BACKEND DATABASE MEIN ORDER SAVE KARNA
-        async function submitOrder() {
+        // 2. Cart Processing
+        function addToCart(id, name, price) {
+            if(globalCart[id]) {
+                globalCart[id].qty += 1;
+            } else {
+                globalCart[id] = { id, name, price, qty: 1 };
+            }
+            document.getElementById('cart-section').style.display = 'block';
+            renderCart();
+            window.location.hash = "cart-section";
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cart-items-list');
+            let total = 0;
+            list.innerHTML = '';
+            
+            for(let key in globalCart) {
+                let item = globalCart[key];
+                total += item.price * item.qty;
+                list.innerHTML += `<p><strong>${item.name}</strong> - ₹${item.price} x ${item.qty}</p>`;
+            }
+            document.getElementById('cart-total-amount').textVer = total; 
+            document.getElementById('cart-total-amount').innerText = total;
+        }
+
+        // 3. Checkout Order Submissions
+        async function placeOrderNow() {
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
             const address = document.getElementById('custAddress').value.trim();
+            const items = Object.values(globalCart);
 
-            if(!name || !phone || !address || total === 0) {
-                alert("Kripya saari details bharein aur cart mein product add karein!");
+            if(!name || !phone || !address || items.length === 0) {
+                alert("Kripya saari details sahi se bharein!");
                 return;
             }
 
-            const orderData = {
-                customer_name: name,
-                phone: phone,
-                address: address,
-                items: cart,
-                total_amount: total,
-                delivery_charge: 0 
-            };
+            const response = await fetch('/api/orders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, phone, address, items })
+            });
+            const data = await response.json();
 
-            try {
-                const res = await fetch('/api/orders', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(orderData)
-                });
-
-                if(res.ok) {
-                    alert("Order Database mein save ho gaya! Ab WhatsApp par details ja rahi hain.");
-                    // WhatsApp open karne ke liye link
-                    let text = `*KGN Onion Birista - New Order*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*`;
-                    for(let key in cart) {
-                        text += `\n- ${key} x ${cart[key].qty}`;
-                    }
-                    text += `\n\n*Total Amount:* ₹${total}`;
-                    
-                    window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`, '_blank'); // Apne WhatsApp number se XXXXXXXXXX badal lena
-                }
-            } catch(err) {
-                alert("Order save karne mein dikkat aayi.");
+            if(data.success) {
+                alert(`🎉 Order Successful! Aapka Order ID hai: ${data.order.id}`);
+                globalCart = {};
+                document.getElementById('cart-section').style.display = 'none';
+                document.getElementById('trackPhone').value = phone;
+                trackCustomerOrder();
+                fetchInventory();
+            } else {
+                alert("Error: " + data.message);
             }
         }
 
-        // LIVE TRACKING FUNCTION
+        // 4. Secure Live Tracking (Anti-Data Leak System)
         async function trackCustomerOrder() {
-            const phoneInput = document.getElementById('trackPhone').value.trim();
+            const phone = document.getElementById('trackPhone').value.trim();
             const resultDiv = document.getElementById('trackResult');
+            if(!phone) { resultDiv.innerHTML = "<p style='color:red;'>Number daalna zaroori hai!</p>"; return; }
 
-            if (!phoneInput) {
-                resultDiv.innerHTML = "<p style='color: red;'>Kripya apna phone number dalein!</p>";
+            resultDiv.innerHTML = "<p>Checking database... ⏳</p>";
+            const res = await fetch(`/api/track/${phone}`);
+            const orders = await res.json();
+
+            if(orders.length === 0) {
+                resultDiv.innerHTML = "<p style='color:red;'>Is number se koi order nahi mila.</p>";
                 return;
             }
 
-            resultDiv.innerHTML = "<p style='color: var(--text-muted);'>Check kar rahe hain... ⏳</p>";
+            resultDiv.innerHTML = '<h4>Aapke Orders:</h4>';
+            orders.forEach(order => {
+                resultDiv.innerHTML += `
+                    <div style="border-bottom:1px solid var(--border-color); padding: 10px 0;">
+                        <p><strong>Order ID:</strong> ${order.id}</p>
+                        <p><strong>Naam:</strong> ${order.name}</p>
+                        <p><strong>Total Bill:</strong> ₹${order.finalAmount}</p>
+                        <span class="status-badge status-${order.status}">${order.status}</span>
+                    </div>
+                `;
+            });
+        }
 
-            try {
-                const res = await fetch('/api/admin/orders');
-                if (!res.ok) throw new Error("Data nahi mila");
-                
-                const orders = await res.json();
-                const customerOrder = orders.find(order => String(order.phone).trim() === phoneInput);
+        // 5. Reviews System
+        async function fetchReviews() {
+            const res = await fetch('/api/reviews');
+            const reviews = await res.json();
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = '';
+            reviews.forEach(r => {
+                container.innerHTML += `
+                    <div style="background:#fff; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color);">
+                        <strong>${r.name} (${r.rating}★)</strong>
+                        <p style="color:var(--text-muted); font-size:14px;">${r.text}</p>
+                    </div>
+                `;
+            });
+        }
 
-                if (customerOrder) {
-                    let statusClass = 'status-pending';
-                    let statusText = '⏳ Pending (Aapka order mil gaya hai)';
+        async function submitReview() {
+            const name = document.getElementById('revName').value.trim();
+            const text = document.getElementById('revText').value.trim();
+            const rating = document.getElementById('revRating').value;
 
-                    if (customerOrder.status === 'Approved') {
-                        statusClass = 'status-approved';
-                        statusText = '✅ Approved (Taiyar ho raha hai)';
-                    } else if (customerOrder.status === 'Dispatched') {
-                        statusClass = 'status-dispatched';
-                        statusText = '🚚 Dispatched (Raste mein hai)';
-                    }
+            if(!name || !text || !rating) return alert("Sabhi fields bharein!");
 
-                    resultDiv.innerHTML = `
-                        <div style="border-top: 1px solid var(--border-color); padding-top: 10px;">
-                            <p><strong>Naam:</strong> ${customerOrder.customer_name}</p>
-                            <p><strong>Total Bill:</strong> ₹${customerOrder.total_amount}</p>
-                            <span class="status-badge ${statusClass}">${statusText}</span>
-                        </div>
-                    `;
-                } else {
-                    resultDiv.innerHTML = "<p style='color: red; font-weight: bold;'>Is number se koi order nahi mila!</p>";
-                }
-            } catch (err) {
-                resultDiv.innerHTML = "<p style='color: red;'>Server error. Baad mein try karein!</p>";
+            await fetch('/api/reviews', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, text, rating })
+            });
+            alert("Review add ho gaya!");
+            fetchReviews();
+        }
+
+        // 6. Protected Admin Framework 
+        async function verifyAdminAccess() {
+            const pass = document.getElementById('adminPass').value;
+            const res = await fetch('/api/admin/orders', { headers: { 'Authorization': pass } });
+            if(res.ok) {
+                currentAdminPassword = pass;
+                document.getElementById('admin-login-block').style.display = 'none';
+                document.getElementById('admin-dashboard-block').style.display = 'block';
+                loadAdminOrders();
+            } else {
+                alert("Galat Password! Access Denied.");
             }
+        }
+
+        async function loadAdminOrders() {
+            const res = await fetch('/api/admin/orders', { headers: { 'Authorization': currentAdminPassword } });
+            const data = await res.json();
+            let html = `<h4>Sabh Orders ki List</h4><table class="admin-table"><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Amount</th><th>Status</th><th>Action</th></tr>`;
+            data.forEach(o => {
+                html += `
+                    <tr>
+                        <td>${o.id}</td>
+                        <td>${o.name}</td>
+                        <td>${o.phone}</td>
+                        <td>₹${o.finalAmount}</td>
+                        <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                        <td>
+                            <select onchange="updateOrderStatus('${o.id}', this.value)">
+                                <option value="">Badlein</option>
+                                <option value="Received">Received</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Dispatched">Dispatched</option>
+                            </select>
+                        </td>
+                    </tr>
+                `;
+            });
+            document.getElementById('admin-content-area').innerHTML = html + `</table>`;
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            if(!status) return;
+            await fetch('/api/admin/orders/status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': currentAdminPassword },
+                body: JSON.stringify({ orderId, status })
+            });
+            loadAdminOrders();
+        }
+
+        async function loadAdminInventory() {
+            const res = await fetch('/api/inventory');
+            const data = await res.json();
+            let html = `<h4>Manage Stock Levels</h4><table class="admin-table"><tr><th>Product</th><th>Current Stock</th><th>New Stock</th></tr>`;
+            data.forEach(p => {
+                html += `
+                    <tr>
+                        <td>${p.name}</td>
+                        <td>${p.stock} units</td>
+                        <td>
+                            <input type="number" style="width:70px; margin:0;" id="st-${p.id}" value="${p.stock}">
+                            <button onclick="updateStock('${p.id}')">Save</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            document.getElementById('admin-content-area').innerHTML = html + `</table>`;
+        }
+
+        async function updateStock(id) {
+            const stock = document.getElementById(`st-${id}`).value;
+            await fetch('/api/admin/inventory', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': currentAdminPassword },
+                body: JSON.stringify({ id, stock })
+            });
+            alert("Stock Level Update Ho Gaya!");
+            loadAdminInventory();
+            fetchInventory();
         }
     </script>
 </body>
