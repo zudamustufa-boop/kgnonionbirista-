@@ -1,23 +1,20 @@
 [
   {
-    "id": "p1",
-    "name": "Standard Pack (250g)",
-    "price": 99,
-    "weight": 0.25,
-    "stock": 50
-  },
-  {
-    "id": "p2",
-    "name": "Medium Pack (500g)",
-    "price": 199,
-    "weight": 0.50,
-    "stock": 40
-  },
-  {
-    "id": "p3",
-    "name": "1 KG Mega Pack",
-    "price": 399,
-    "weight": 1.00,
-    "stock": 30
+    "id": "KGN78451",
+    "name": "Zaid Shah",
+    "phone": "9876543210",
+    "address": "Rander Road, Near Gorat Dargah, Surat",
+    "items": [
+      {
+        "id": "p1",
+        "name": "Standard Pack (250g)",
+        "price": 99,
+        "weight": 0.25,
+        "qty": 2
+      }
+    ],
+    "finalAmount": 238,
+    "status": "Received",
+    "timestamp": "2026-07-09T07:30:00.000Z"
   }
 ]
