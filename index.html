@@ -3,340 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KGN Onion Birista - Premium Crispy Fried Onions</title>
+    
+    <title>KGN Onion Birista - Premium Crispy Fried Onions | Order Online Surat</title>
+    <meta name="description" content="Order 100% fresh, crispy, golden fried onions online from KGN Onion Birista. Perfect for Biryani, Korma, and Gravies. Hygienically packed packs delivered across Surat. Secure payments & live tracking.">
+    <meta name="keywords" content="Fried Onion online, buy birista Surat, crispy fried onion, KGN Birista, ready to use fried onion, premium birista surat, buy fried onion online india">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kgnonionbirista.com/">
+    
+    <meta property="og:title" content="KGN Onion Birista - Premium Crispy Fried Onions">
+    <meta property="og:description" content="Get restaurant-style crunch instantly. Premium packs available in 250g, 500g, and 1kg. Secure payments & live tracking.">
+    <meta property="og:image" content="birista-1kg.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kgnonionbirista.com/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+    
     <style>
-        :root { --primary: #6E360F; --accent: #FF8C00; --bg-light: #FCF9F5; --bg-card: #ffffff; --text-dark: #2C2520; --border-color: #EFEAE4; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 60px; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; }
-        .title-main { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 30px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .product-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; text-align: center; }
-        .price { font-size: 20px; font-weight: 700; color: var(--accent); margin: 10px 0; }
-        .btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
-        .btn:hover { background: var(--accent); }
-        .interactive-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin: 30px auto; max-width: 600px; }
-        .interactive-box input, .interactive-box textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 8px; }
-        .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
-        .qty-btn { background: var(--border-color); border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-        .status-badge { display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 13px; }
-        .status-Received { background: #FFF3CD; color: #856404; }
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
-        .admin-table th, .admin-table td { border: 1px solid var(--border-color); padding: 10px; text-align: left; }
-        header { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        
-        /* Siren System Style Block */
-        .alarm-active-box { background: #FFD2D2; border: 3px dashed #FF0000; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; animation: flashBg 1s infinite alternate; }
-        @keyframes flashBg { 0% { background: #FFD2D2; } 100% { background: #FFA3A3; } }
-        .stop-alarm-btn { background: #FF0000; color: white; border: none; font-size: 18px; font-weight: bold; padding: 10px 25px; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        :root {
+            --primary: #6E360F;
+            --primary-light: #CD853F;
+            --accent: #FF8C00;
+            --accent-gold: #D4AF37;
+            --bg-light: #FCF9F5;
+            --bg-card: #ffffff;
+            --text-dark: #2C2520;
+            --text-muted: #6E5A4E;
+            --border-color: #EFEAE4;
+            --card-shadow: 0 10px 30px rgba(110, 54, 15, 0.05);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        .dark-mode {
+            --primary: #F0E6DF;
+            --primary-light: #CD853F;
+            --accent: #FF9F43;
+            --bg-light: #1A1512;
+            --bg-card: #251E1A;
+            --text-dark: #F5EFEB;
+            --text-muted: #C5B3A6;
+            --border-color: #3A3029;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --nav-bg: rgba(37, 30, 26, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-dark); transition: background 0.3s, color 0.3s; overflow-x: hidden; padding-bottom: 60px; }
+
+        #scrollProgress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--accent), var(--accent-gold)); width: 0%; z-index: 9999; }
+
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .loader-onion { font-size: 60px; animation: bounce 1s infinite alternate; }
+        @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+
+        .section-padding { padding: 60px 5% 30px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .title-main { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 15px; position: relative; }
+        .title-main::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto 0; border-radius: 2px; }
+        .subtitle { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+
+        .top-badges-ticker { background: linear-gradient(45deg, var(--primary), #4A2206); color: #fff; font-size: 13px; font-weight: 600; padding: 10px 0; overflow: hidden; display: flex; width: 100%; }
+        .ticker-badges-wrap { display: flex; width: 200%; animation: scrollBadges 15s linear infinite; gap: 60px; justify-content: space-around; align-items: center; white-space: nowrap; }
+        @keyframes scrollBadges { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-badge-item { display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
+        .ticker-badge-item i { color: var(--accent-gold); }
+
+        header { background: var(--nav-bg); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 900; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+        .brand-link { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .brand-text h1 { color: var(--primary); font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+        .brand-text p { font-size: 10px; color: var(--primary-light); font-weight: 700; text-transform: uppercase; }
+        .logo-container img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--accent-gold); object-fit: cover; }
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+
+        .btn-icon-nav { background: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-dark); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; position: relative; font-size: 16px; transition: all 0.3s; }
+        .btn-icon-nav:hover { background: var(--primary); color: #fff; }
+        .badge-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        .presentation-slider { margin-bottom: 40px; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+
+        /* Naya Tracking Section Styling */
+        .tracking-box { background: var(--bg-card); border: 2px dashed var(--primary-light); border-radius: 16px; padding: 25px; margin: 30px auto; max-width: 500px; text-align: center; box-shadow: var(--card-shadow); }
+        .tracking-box input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; text-align: center; }
+        .tracking-box button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .tracking-box button:hover { background: var(--accent); }
+        .status-badge { display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: bold; margin-top: 15px; font-size: 18px; }
+        .status-pending { background: #FFF3CD; color: #856404; }
+        .status-approved { background: #D4EDDA; color: #155724; }
+        .status-dispatched { background: #CCE5FF; color: #004085; }
     </style>
 </head>
 <body>
 
-    <!-- SIREN ALARM TONE CONTEXT BUFFER LAYER -->
-    <audio id="kgnAlertSiren" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/911/911-84.wav" type="audio/wav">
-    </audio>
+    <div id="scrollProgress"></div>
 
-    <header>
-        <h1>🧅 KGN Birista</h1>
-        <div>
-            <a href="#products-section" style="margin-right:15px; text-decoration:none; color:var(--primary); font-weight:bold;">Products</a>
-            <a href="#tracking-section" style="text-decoration:none; color:var(--primary); font-weight:bold;">Track Order</a>
+    <!-- Ticker Top -->
+    <div class="top-badges-ticker">
+        <div class="ticker-badges-wrap">
+            <div class="ticker-badge-item"><i class="fa-solid fa-fire"></i> 100% Fresh Onion Fried</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-truck"></i> Fast Delivery in Surat</div>
+            <div class="ticker-badge-item"><i class="fa-solid fa-award"></i> Premium Quality Birista</div>
         </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="brand-link">
+            <div class="logo-container">
+                <div class="loader-onion">🧅</div>
+            </div>
+            <div class="brand-text">
+                <h1>KGN Birista</h1>
+                <p>Premium Quality</p>
+            </div>
+        </a>
     </header>
 
-    <main class="container">
-        <!-- PRODUCTS DISPLAY -->
-        <section id="products-section">
-            <div class="title-main">Hamare Premium Products</div>
-            <div class="products-grid" id="products-container"></div>
-        </section>
-
-        <!-- CART BLOCK -->
-        <section id="cart-section" class="interactive-box" style="display:none;">
-            <h3>🛒 Aapka Cart</h3>
-            <div id="cart-items-list"></div>
-            <h4 style="margin-top:10px;">Total Bill Amount: ₹<span id="cart-total-amount">0</span></h4>
-            
-            <h3 style="margin-top:25px;">📋 Checkout Details</h3>
-            <input type="text" id="custName" placeholder="Aapka Full Naam">
-            <input type="tel" id="custPhone" placeholder="Mobile Number">
-            <textarea id="custAddress" rows="3" placeholder="Full Delivery Address (Surat Only)"></textarea>
-            <button class="btn" onclick="placeOrderNow()">Confirm Order (Cash On Delivery)</button>
-        </section>
-
-        <!-- SECURE DATA TRACKING -->
-        <section id="tracking-section" class="interactive-box">
-            <h3>📦 Secure Order Tracking</h3>
-            <input type="text" id="trackOrderId" placeholder="Enter Order ID">
-            <input type="tel" id="trackPhone" placeholder="Enter Registered Phone Number">
-            <button class="btn" onclick="trackCustomerOrder()">Live Tracking Status</button>
+    <!-- MAIN BODY CONTENT -->
+    <main class="container section-padding">
+        
+        <!-- Live Order Tracking Area -->
+        <div class="tracking-box" data-aos="fade-up">
+            <h2>📦 Apna Order Track Karein</h2>
+            <p style="color: var(--text-muted); font-size: 14px;">Order status live dekhne ke liye apna phone number dalein:</p>
+            <input type="number" id="trackPhone" placeholder="Enter Registered Phone Number">
+            <br>
+            <button onclick="trackCustomerOrder()">Live Status Dekhein</button>
             <div id="trackResult" style="margin-top: 15px;"></div>
-        </section>
+        </div>
 
-        <!-- MODERATED FEEDBACK SYSTEM -->
-        <section class="interactive-box">
-            <h3>Customer Reviews</h3>
-            <div id="reviews-container" style="margin-bottom:15px; font-size:14px;"></div>
-            <h4>Add Review</h4>
-            <input type="text" id="revName" placeholder="Aapka Naam">
-            <input type="text" id="revText" placeholder="Review Message">
-            <input type="number" id="revRating" min="1" max="5" placeholder="Rating (1-5)">
-            <button class="btn" onclick="submitReview()">Submit Review</button>
-        </section>
+        <!-- Yahan niche aapka baaki ka products aur cart section chalega -->
+        <div class="title-main">Hamare Products</div>
+        <p class="subtitle">Bina kisi jhanjhat ke restaurant jaisa taste ghar par paayein</p>
 
-        <!-- ADMIN DESK UI LAYER WITH LIVE SIREN INTERACTION FLUIDS -->
-        <section id="admin-section" class="interactive-box" style="max-width:900px;">
-            <h3>🔐 Encrypted Admin Panel</h3>
-            
-            <!-- Real-Time Siren Screen Alert Block -->
-            <div id="siren-alert-container" style="display:none;" class="alarm-active-box">
-                <h2 style="color:red;"><i class="fa-solid fa-bell-ring fa-bounce"></i> 🚨 NAYA ORDER MILA HAI!!</h2>
-                <p id="siren-order-details" style="font-weight:bold;"></p>
-                <button class="stop-alarm-btn" onclick="silenceOrderAlarm()">STOP ALARM 🔔</button>
-            </div>
-
-            <div id="admin-login-block">
-                <input type="password" id="adminPass" placeholder="Enter Secret Cluster Password">
-                <button class="btn" onclick="verifyAdminAccess()">Unlock Dashboard</button>
-            </div>
-            
-            <div id="admin-dashboard-block" style="display:none; margin-top:20px;">
-                <button onclick="loadAdminOrders()">Orders Dashboard</button> | 
-                <button onclick="loadAdminReviews()">Reviews Moderation</button> |
-                <button onclick="loadAdminInventory()">Stock Levels</button>
-                <div id="admin-content-area" style="margin-top:15px;"></div>
-            </div>
-        </section>
     </main>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        let globalCart = {}; let inventoryData = []; let currentAdminPassword = "";
-        let alarmPollingInterval = null;
-
-        window.addEventListener('load', () => { fetchInventory(); fetchReviews(); });
-
-        async function fetchInventory() {
-            const res = await fetch('/api/inventory');
-            inventoryData = await res.json();
-            const container = document.getElementById('products-container');
-            container.innerHTML = '';
-            inventoryData.forEach(p => {
-                container.innerHTML += `
-                    <div class="product-card">
-                        <h3>${p.name}</h3>
-                        <p class="price">₹${p.price}</p>
-                        <p style="font-size:12px; color:gray">Stock: ${p.stock} left</p>
-                        <button class="btn" onclick="modifyCart('${p.id}', 1)">Add to Cart</button>
-                    </div>
-                `;
+        AOS.init();
+        
+        // Loader hatane ke liye
+        window.addEventListener('load', () => {
+            const scroll = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', () => {
+                const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+                if(totalScroll > 0) {
+                    scroll.style.width = (window.pageYOffset / totalScroll) * 100 + '%';
+                }
             });
-        }
+        });
 
-        function modifyCart(id, change) {
-            const p = inventoryData.find(prod => prod.id === id);
-            if(!globalCart[id]) globalCart[id] = { id: p.id, name: p.name, price: p.price, weight: p.weight, qty: 0 };
-            globalCart[id].qty += change;
-            if(globalCart[id].qty <= 0) delete globalCart[id];
-            document.getElementById('cart-section').style.display = Object.keys(globalCart).length ? 'block' : 'none';
-            renderCart();
-        }
-
-        function renderCart() {
-            const list = document.getElementById('cart-items-list'); list.innerHTML = '';
-            let total = 0; let weight = 0;
-            for(let k in globalCart) {
-                let item = globalCart[k]; total += item.price * item.qty; weight += item.weight * item.qty;
-                list.innerHTML += `
-                    <div class="cart-item-row">
-                        <span>${item.name} x ${item.qty}</span>
-                        <div>
-                            <button class="qty-btn" onclick="modifyCart('${item.id}', -1)">-</button>
-                            <button class="qty-btn" onclick="modifyCart('${item.id}', 1)">+</button>
-                        </div>
-                    </div>
-                `;
-            }
-            let shipping = total >= 500 ? 0 : (weight > 2 ? 60 : 40);
-            document.getElementById('cart-total-amount').innerText = total + shipping;
-        }
-
-        async function placeOrderNow() {
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
-            const items = Object.values(globalCart);
-
-            const res = await fetch('/api/orders', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ name, phone, address, items })
-            });
-            const data = await res.json();
-            if(data.success) {
-                alert(`🎉 Order Accepted!\nOrder ID: ${data.order.id}`);
-                document.getElementById('trackOrderId').value = data.order.id;
-                document.getElementById('trackPhone').value = phone;
-                globalCart = {}; document.getElementById('cart-section').style.display = 'none';
-                fetchInventory(); trackCustomerOrder();
-            } else { alert(data.message); }
-        }
-
+        // LIVE TRACKING FUNCTION
         async function trackCustomerOrder() {
-            const orderId = document.getElementById('trackOrderId').value.trim();
-            const phone = document.getElementById('trackPhone').value.trim();
+            const phoneInput = document.getElementById('trackPhone').value.trim();
             const resultDiv = document.getElementById('trackResult');
-            
-            const res = await fetch('/api/track', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ orderId, phone })
-            });
-            const data = await res.json();
-            if(data.success) {
-                resultDiv.innerHTML = `
-                    <div style="background:#fff; border:1px solid #ccc; padding:15px; border-radius:8px;">
-                        <p><b>Order ID:</b> ${data.order.id}</p>
-                        <p><b>Customer:</b> ${data.order.name}</p>
-                        <p><b>Bill Amount:</b> ₹${data.order.finalAmount}</p>
-                        <p><b>Status:</b> <span class="status-badge status-Received">${data.order.status}</span></p>
-                    </div>
-                `;
-            } else { resultDiv.innerHTML = `<p style="color:red;">${data.message}</p>`; }
-        }
 
-        async function fetchReviews() {
-            const res = await fetch('/api/reviews');
-            const data = await res.json();
-            const div = document.getElementById('reviews-container'); div.innerHTML = '';
-            data.forEach(r => { div.innerHTML += `<p><b>${r.name} (${r.rating}★):</b> ${r.text}</p>`; });
-        }
-
-        async function submitReview() {
-            await fetch('/api/reviews', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    name: document.getElementById('revName').value,
-                    text: document.getElementById('revText').value,
-                    rating: document.getElementById('revRating').value
-                })
-            });
-            alert("Review submitted! Admin approval ka wait karein.");
-            document.getElementById('revName').value = ''; document.getElementById('revText').value = '';
-        }
-
-        // --- REAL-TIME SIREN POLLING CONTROL MECHANISM ---
-        async function startAdminAlertPolling() {
-            alarmPollingInterval = setInterval(async () => {
-                if(!currentAdminPassword) return;
-                try {
-                    const res = await fetch('/api/admin/alerts', { headers: {'Authorization': currentAdminPassword} });
-                    if(res.ok) {
-                        const data = await res.json();
-                        if(data.newOrders && data.newOrders.length > 0) {
-                            const latestOrder = data.newOrders[0];
-                            document.getElementById('siren-order-details').innerText = `ID: ${latestOrder.id} | Name: ${latestOrder.name} | Total Bill: ₹${latestOrder.finalAmount}`;
-                            document.getElementById('siren-alert-container').style.display = 'block';
-                            
-                            const soundEngine = document.getElementById('kgnAlertSiren');
-                            soundEngine.play().catch(e => console.log("Audio permission layer pending..."));
-                        }
-                    }
-                } catch(err) {}
-            }, 4000);
-        }
-
-        async function silenceOrderAlarm() {
-            const soundEngine = document.getElementById('kgnAlertSiren');
-            soundEngine.pause();
-            soundEngine.currentTime = 0;
-            
-            await fetch('/api/admin/alerts/clear', {
-                method: 'POST',
-                headers: {'Authorization': currentAdminPassword}
-            });
-
-            document.getElementById('siren-alert-container').style.display = 'none';
-            loadAdminOrders(); 
-        }
-
-        async function verifyAdminAccess() {
-            const pass = document.getElementById('adminPass').value;
-            const res = await fetch('/api/admin/orders', { headers: {'Authorization': pass} });
-            if(res.ok) {
-                currentAdminPassword = pass;
-                document.getElementById('admin-login-block').style.display = 'none';
-                document.getElementById('admin-dashboard-block').style.display = 'block';
-                loadAdminOrders();
-                startAdminAlertPolling();
-            } else { 
-                const errData = await res.json();
-                alert(errData.message || "Access Denied!"); 
+            if (!phoneInput) {
+                resultDiv.innerHTML = "<p style='color: red;'>Kripya apna phone number dalein!</p>";
+                return;
             }
-        }
 
-        async function loadAdminOrders() {
-            const res = await fetch('/api/admin/orders', { headers: {'Authorization': currentAdminPassword} });
-            const data = await res.json();
-            let table = `<table class="admin-table"><tr><th>ID</th><th>Customer Details</th><th>Status Actions</th></tr>`;
-            data.forEach(o => {
-                table += `<tr><td>${o.id}</td><td>${o.name} (${o.phone})<br>Bill: ₹${o.finalAmount}</td>
-                <td><select onchange="updateStatus('${o.id}', this.value)"><option value="">${o.status}</option><option value="Approved">Approved</option><option value="Dispatched">Dispatched</option></select></td></tr>`;
-            });
-            document.getElementById('admin-content-area').innerHTML = table + '</table>';
-        }
+            resultDiv.innerHTML = "<p style='color: var(--text-muted);'>Database se check kar rahe hain... ⏳</p>";
 
-        async function updateStatus(orderId, status) {
-            if(!status) return;
-            await fetch('/api/admin/orders/status', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json', 'Authorization': currentAdminPassword},
-                body: JSON.stringify({ orderId, status })
-            });
-            loadAdminOrders();
-        }
+            try {
+                // Backend Database (Supabase) se live orders fetch karna
+                const res = await fetch('/api/admin/orders');
+                if (!res.ok) throw new Error("Data nahi mila");
+                
+                const orders = await res.json();
+                
+                // Customer ke phone number se order match karna (sabse naya order pehle)
+                const customerOrder = orders.find(order => String(order.phone).trim() === phoneInput);
 
-        async function loadAdminReviews() {
-            const res = await fetch('/api/admin/reviews', { headers: {'Authorization': currentAdminPassword} });
-            const data = await res.json();
-            let table = `<table class="admin-table"><tr><th>Author</th><th>Review</th><th>Status</th><th>Actions</th></tr>`;
-            data.forEach(r => {
-                table += `<tr><td>${r.name}</td><td>${r.text} (${r.rating}★)</td><td><b>${r.status}</b></td>
-                <td>${r.status === 'pending' ? `<button onclick="moderateReview('${r.id}', 'approve')">Approve</button>` : ''} <button onclick="moderateReview('${r.id}', 'delete')" style="color:red;">Delete</button></td></tr>`;
-            });
-            document.getElementById('admin-content-area').innerHTML = table + '</table>';
-        }
+                if (customerOrder) {
+                    let statusClass = 'status-pending';
+                    let statusText = '⏳ Pending (Aapka order mil gaya hai)';
 
-        async function moderateReview(reviewId, action) {
-            await fetch('/api/admin/reviews/action', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json', 'Authorization': currentAdminPassword},
-                body: JSON.stringify({ reviewId, action })
-            });
-            loadAdminReviews(); fetchReviews();
-        }
+                    if (customerOrder.status === 'Approved') {
+                        statusClass = 'status-approved';
+                        statusText = '✅ Approved (Dukan par taiyar ho raha hai)';
+                    } else if (customerOrder.status === 'Dispatched') {
+                        statusClass = 'status-dispatched';
+                        statusText = '🚚 Dispatched (Delivery ke liye nikal chuka hai)';
+                    }
 
-        async function loadAdminInventory() {
-            const res = await fetch('/api/inventory');
-            const data = await res.json();
-            let table = `<table class="admin-table"><tr><th>Product Name</th><th>Stock Levels</th></tr>`;
-            data.forEach(p => {
-                table += `<tr><td>${p.name}</td><td><input type="number" value="${p.stock}" id="inv-${p.id}" style="width:60px;"><button onclick="saveStock('${p.id}')">Save</button></td></tr>`;
-            });
-            document.getElementById('admin-content-area').innerHTML = table + '</table>';
-        }
+                    resultDiv.innerHTML = `
+                        <div style="border-top: 1px solid var(--border-color); padding-top: 10px;">
+                            <p><strong>Customer Name:</strong> ${customerOrder.customer_name}</p>
+                            <p><strong>Total Amount:</strong> ₹${customerOrder.total_amount}</p>
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = "<p style='color: red; font-weight: bold;'>Is number se koi order nahi mila. Kripya sahi number dalein!</p>";
+                }
 
-        async function saveStock(id) {
-            const stock = document.getElementById(`inv-${id}`).value;
-            await fetch('/api/admin/inventory', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json', 'Authorization': currentAdminPassword},
-                body: JSON.stringify({ id, stock })
-            });
-            loadAdminInventory(); fetchInventory();
+            } catch (err) {
+                console.error(err);
+                resultDiv.innerHTML = "<p style='color: red;'>Server connect karne mein dikkat aayi. Kripya thodi der baad try karein!</p>";
+            }
         }
     </script>
 </body>
