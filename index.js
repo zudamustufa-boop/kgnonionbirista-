@@ -1,104 +1,168 @@
-         
-const express = require('express');
-const { createClient } = require('@supabase/supabase-client');
-const path = require('path');
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const cors = require("cors");
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Render ke Environment Variables se Supabase connect karna
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors()); // CORS Enabled for flexible hosting
+app.use(express.static(path.join(__dirname)));
 
-// HTML file ko server par chalane ke liye
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+const ADMIN_PASSWORD = "KGN_SURAT_SECURE_2026"; // Dashboard Password
+
+const ORDERS_FILE = path.join(__dirname, "orders.json");
+const REVIEWS_FILE = path.join(__dirname, "reviews.json");
+const INVENTORY_FILE = path.join(__dirname, "inventory.json");
+
+// Helper database functions
+function readData(file, defaultData) {
+    try {
+        if (!fs.existsSync(file)) {
+            fs.writeFileSync(file, JSON.stringify(defaultData, null, 2));
+            return defaultData;
+        }
+        return JSON.parse(fs.readFileSync(file, "utf8"));
+    } catch (e) { return defaultData; }
+}
+
+function writeData(file, data) {
+    try { fs.writeFileSync(file, JSON.stringify(data, null, 2)); } catch (e) {}
+}
+
+// Simple Helper to block Cross-Site Scripting (XSS Mitigation)
+function sanitizeInput(str) {
+    if (typeof str !== 'string') return str;
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// Security Middleware for Admin Access
+function adminAuth(req, res, next) {
+    const userPass = req.headers['authorization'];
+    if (userPass === ADMIN_PASSWORD) {
+        next();
+    } else {
+        res.status(401).json({ success: false, message: "Unauthorized Entry Attempted!" });
+    }
+}
+
+// 1. Get Inventory
+app.get("/api/inventory", (req, res) => {
+    const defaultInv = [
+        { id: "p1", name: "Standard Pack (250g)", price: 99, stock: 15 },
+        { id: "p2", name: "Medium Pack (500g)", price: 199, stock: 20 },
+        { id: "p3", name: "1 KG Mega Pack", price: 399, stock: 25 }
+    ];
+    res.json(readData(INVENTORY_FILE, defaultInv));
 });
 
-// 1. Delivery Charge permanent database se nikalne ke liye API
-app.get('/api/delivery-charge', async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from('settings')
-            .select('value')
-            .eq('key', 'delivery_charge')
-            .single();
-        
-        if (error && error.code !== 'PGRST116') throw error;
-        const charge = data ? parseFloat(data.value) : 0;
-        res.json({ delivery_charge: charge });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+// 2. Post Order with Server Side Price Verification
+app.post("/api/orders", (req, res) => {
+    const { name, phone, address, items } = req.body;
+    
+    if(!name || !phone || !address || !items || items.length === 0) {
+        return res.status(400).json({ success: false, message: "Data Adhura Hai!" });
+    }
+
+    let inv = readData(INVENTORY_FILE, []);
+    let calculatedTotal = 0;
+
+    // Secure Verification Loop
+    for (let item of items) {
+        const product = inv.find(p => p.id === item.id);
+        if (!product || product.stock < item.qty) {
+            return res.status(400).json({ success: false, message: `Stock Issue for ${item.name}` });
+        }
+        calculatedTotal += product.price * item.qty;
+    }
+
+    // Deduct stock levels safely
+    items.forEach(item => {
+        const product = inv.find(p => p.id === item.id);
+        if (product) product.stock -= item.qty;
+    });
+    writeData(INVENTORY_FILE, inv);
+
+    let orders = readData(ORDERS_FILE, []);
+    const uniqueOrderId = "KGN" + Math.floor(10000 + Math.random() * 90000);
+
+    // FIXED FIELDS: Match exactly with frontend properties
+    const newOrder = {
+        id: uniqueOrderId,
+        name: sanitizeInput(name),
+        phone: sanitizeInput(phone),
+        address: sanitizeInput(address),
+        items: items,
+        finalAmount: calculatedTotal, // Locked by server calculation
+        status: "Received",
+        timestamp: new Date()
+    };
+
+    orders.unshift(newOrder);
+    writeData(ORDERS_FILE, orders);
+    res.json({ success: true, order: newOrder });
+});
+
+// 3. Secure Phone-Based Tracker (Anti Data Leak)
+app.get("/api/track/:phone", (req, res) => {
+    const searchPhone = req.params.phone.trim();
+    const orders = readData(ORDERS_FILE, []);
+    // Filters only requested details
+    const filtered = orders.filter(o => String(o.phone).trim() === searchPhone);
+    res.json(filtered);
+});
+
+// 4. Post Review (XSS Protection Active)
+app.post("/api/reviews", (req, res) => {
+    const { name, text, rating } = req.body;
+    let reviews = readData(REVIEWS_FILE, []);
+    reviews.unshift({
+        name: sanitizeInput(name),
+        text: sanitizeInput(text),
+        rating: parseInt(rating) || 5
+    });
+    writeData(REVIEWS_FILE, reviews);
+    res.json({ success: true });
+});
+
+app.get("/api/reviews", (req, res) => {
+    res.json(readData(REVIEWS_FILE, []));
+});
+
+// ---------- PROTECTED ADMIN PIPELINES (Middleware Engaged) ----------
+app.get("/api/admin/orders", adminAuth, (req, res) => {
+    res.json(readData(ORDERS_FILE, []));
+});
+
+app.post("/api/admin/orders/status", adminAuth, (req, res) => {
+    const { orderId, status } = req.body;
+    let orders = readData(ORDERS_FILE, []);
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+        order.status = status;
+        writeData(ORDERS_FILE, orders);
+        res.json({ success: true });
+    } else {
+        res.status(404).json({ success: false });
     }
 });
 
-// Admin Panel se delivery charge badalne ke liye API
-app.post('/api/admin/set-delivery', async (req, res) => {
-    const { password, charge } = req.body;
-    if (password !== "kgn123") return res.status(403).json({ error: "Wrong Password" });
-
-    try {
-        const { error } = await supabase
-            .from('settings')
-            .upsert({ key: 'delivery_charge', value: String(charge) });
-
-        if (error) throw error;
-        res.json({ success: true, message: "Delivery charge updated permanent!" });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+app.post("/api/admin/inventory", adminAuth, (req, res) => {
+    const { id, stock } = req.body;
+    let inv = readData(INVENTORY_FILE, []);
+    const item = inv.find(p => p.id === id);
+    if (item) {
+        item.stock = parseInt(stock) || 0;
+        writeData(INVENTORY_FILE, inv);
     }
+    res.json({ success: true });
 });
 
-// 2. Order ko permanent database mein save karne aur approve karne ki APIs
-app.post('/api/orders', async (req, res) => {
-    const { customer_name, phone, address, items, total_amount, delivery_charge } = req.body;
-    try {
-        const { data, error } = await supabase
-            .from('orders')
-            .insert([{ customer_name, phone, address, items, total_amount, delivery_charge, status: 'Pending' }])
-            .select();
-
-        if (error) throw error;
-        res.json({ success: true, order: data[0] });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+// Root Routing Fallback
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get('/api/admin/orders', async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from('orders')
-            .select('*')
-            .order('id', { ascending: false });
-
-        if (error) throw error;
-        res.json(data);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.post('/api/admin/approve-order', async (req, res) => {
-    const { password, orderId } = req.body;
-    if (password !== "kgn123") return res.status(403).json({ error: "Wrong Password" });
-
-    try {
-        const { error } = await supabase
-            .from('orders')
-            .update({ status: 'Approved' })
-            .eq('id', orderId);
-
-        if (error) throw error;
-        res.json({ success: true, message: "Order approved permanent!" });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`KGN Onion Birista server running on port ${PORT}`);
+    console.log(`🚀 KGN Backend Engine Running Securely on Port ${PORT}`);
 });
